@@ -13,7 +13,8 @@ module StarterApp
     end
 
     post '/decks', :authenticates => true do
-
+      current_user.new_deck(:name => params[:name])
+      redirect to('decks')
     end
 
     post '/decks/:id/slides', :authenticates => true do

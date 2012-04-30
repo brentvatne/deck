@@ -5,6 +5,7 @@ module StarterApp
     include DataMapper::Resource
 
     has 1, :token_pair
+    has n, :decks
 
     property :id,    Serial
     property :email, String, :unique => true
@@ -19,8 +20,10 @@ module StarterApp
       first(:email => email).token_pair
     end
 
-    def decks
-      []
+    def new_deck(name)
+      deck = Deck.create(name)
+      decks << deck
+      save
     end
   end
 end

@@ -6,7 +6,12 @@
     <p><a href="/decks/new" class="button big">Create your first deck!</a></p>
   </div>
 <% else %>
-  <% decks.each do |deck| %>
-    <%= deck %>
+  <p>
+  <% decks.all.each do |deck| %>
+    <%= link_to deck.name, "/decks/#{deck.id}" %>
   <% end %>
+  </p>
+  <p>
+    <a href="/decks/new" class="button big">Create a new deck</a>
+  </p>
 <% end %>
