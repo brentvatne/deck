@@ -19,6 +19,25 @@
   background-image: -moz-linear-gradient(bottom, rgb(10,9,10) 10%, rgb(33,36,36) 55%);
   background-image: -webkit-linear-gradient(bottom, rgb(10,9,10) 10%, rgb(33,36,36) 55%);
   background-image: -ms-linear-gradient(bottom, rgb(10,9,10) 10%, rgb(33,36,36) 55%);
+
+  .header-wrap {
+    width: 800px;
+    margin: 0 auto;
+
+    .branding {
+      float: left;
+      color: white;
+      font-size: 20px;
+      padding-top: 10px;
+    }
+
+    .user-info {
+      float: right;
+      display: inline-block;
+      color: #A9A9A9;
+      padding-top: 8px;
+    }
+  }
 }
 
 
@@ -39,13 +58,20 @@
 }
 
 .footer {
-  width: 700px;
+  width: 750px;
   margin: 0 auto;
   text-align: right;
   padding-top: 10px;
+  .separator {
+    border-right: 1px dotted #B8B8B8;
+    padding-left: 10px;
+    margin-right: 10px;
+  }
   a {
     color: #B8B8B8;
     text-decoration: none;
+    &.first {
+    }
   }
 }
 

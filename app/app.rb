@@ -68,5 +68,9 @@ module StarterApp
     def coffeescript_exists?(asset)
       File.exists?(File.join(settings.root, settings.coffee_dir, asset + ".coffee"))
     end
+
+    def erb(file, *args)
+      super(file.to_sym, *args)
+    end
   end
 end

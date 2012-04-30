@@ -18,5 +18,9 @@ module StarterApp
     def self.token_pair_for(email)
       first(:email => email).token_pair
     end
+
+    def decks
+      ["hello", "there"]
+    end
   end
 end

@@ -2,7 +2,6 @@ require_relative '../app'
 
 module StarterApp
   class App < Sinatra::Application
-    attr_accessor :client, :calendar
 
     # Should deal with an edge case:
     # If the user does not have a refresh token, and no refresh
@@ -16,8 +15,7 @@ module StarterApp
       user          = User.find_or_create_from_omniauth(omniauth_params)
       session[:uid] = user.email
 
-      omniauth_params.inspect
-      # redirect to('/some_signed_in_path')
+      redirect to('/decks')
     end
 
     get '/auth/failure' do
@@ -58,9 +56,13 @@ module StarterApp
       !!session[:uid]
     end
 
+    def current_user
+      @current_user ||= User.first(:email => session[:uid])
+    end
+
     # Returns TokenPair instance from the session or returns nil
     def session_token_pair
-      if user = User.first(:email => session[:uid])
+      if current_user
         user.token_pair
       end
     end
