@@ -3,7 +3,56 @@
 @import 'github_buttons.scss';
 @import 'notifications.scss';
 
+.home {
+  text-align: center;
+}
+
+.sign-in-button-wrapper {
+  padding-top: 10px;
+}
+
+.header {
+  width: 100%;
+  height: 40px;
+  background-image: linear-gradient(bottom, rgb(10,9,10) 10%, rgb(33,36,36) 55%);
+  background-image: -o-linear-gradient(bottom, rgb(10,9,10) 10%, rgb(33,36,36) 55%);
+  background-image: -moz-linear-gradient(bottom, rgb(10,9,10) 10%, rgb(33,36,36) 55%);
+  background-image: -webkit-linear-gradient(bottom, rgb(10,9,10) 10%, rgb(33,36,36) 55%);
+  background-image: -ms-linear-gradient(bottom, rgb(10,9,10) 10%, rgb(33,36,36) 55%);
+}
+
+
+.paper {
+  width: 700px;
+  margin: 0 auto;
+  padding: 10px 50px 50px 50px;
+  background: #FFF;
+  border: 1px solid #B8B8B8;
+  border-top: 0px;
+  border-radius: 0px 0px 15px 15px;
+  box-shadow: 0px 0px 5px rgba(50, 50, 50, 0.3);
+
+  p {
+    display: inline-block;
+    width: 400px;
+  }
+}
+
+.footer {
+  width: 700px;
+  margin: 0 auto;
+  text-align: right;
+  padding-top: 10px;
+  a {
+    color: #B8B8B8;
+    text-decoration: none;
+  }
+}
+
 body {
+  vertical-align: baseline;
+  background: #F9F9FA;
+  color: #333;
   h1 {
     font-weight: 700;
   }
@@ -18,17 +67,6 @@ body {
     }
   }
 }
-
-.wrap {
-  width: 400px;
-  margin: 0 auto;
-  .minor-group {
-    .button {
-      border: none;
-    }
-  }
-}
-
 .control-bar {
   padding-top: 10px;
   text-align: right;
@@ -38,57 +76,6 @@ body {
   }
   a:hover {
     color: #CCC;
-  }
-}
-
-#caldo {
-  text-align: center;
-  .todos {
-    width: 350px;
-    display: inline-block;
-
-    .todo {
-      text-align: left;
-			.todo-summary {
-				font-weight: 600;
-			}
-			.todo-date {
-        display: none;
-        color: #545454;
-			}
-			.todo-time {
-        color: #545454;
-			}
-      .todo-date-time {
-        width: 150px;
-        text-align: right;
-      }
-      &.important {
-        .todo-summary {
-          background-color: #fbfc95;
-        }
-        .todo-date {
-          display: inline;
-        }
-      }
-
-      &.complete {
-        opacity: 0.2;
-      }
-    }
-  }
-
-  .days-navigator {
-    position: relative;
-
-    .previous-day {
-      position: absolute;
-      left: 0px;
-    }
-    .next-day {
-      position: absolute;
-      right: 0px;
-    }
   }
 }
 

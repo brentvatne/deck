@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Starter App</title>
+  <title>Deck</title>
   <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='/stylesheets/application.css' rel='stylesheet' type='text/css'>
   <!--[if lt IE 9]>
@@ -24,8 +24,18 @@
     <% end %>
   <% end %>
 
+  <div class="header">
+
+  </div>
+
   <div class="wrap">
-    <%= yield  %>
+    <div class="paper">
+      <%= yield  %>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="http://www.twitter.com/notbrent">@notbrent</a>
   </div>
 
   <script src='/javascripts/vendor/jquery.js'></script>
