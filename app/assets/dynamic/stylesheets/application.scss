@@ -9,6 +9,15 @@
 
 h1 {
   text-align: center;
+  position: relative;
+}
+
+.new-deck-button-wrapper {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  text-align: right;
+  margin-top: 0px;
 }
 
 .new-deck {

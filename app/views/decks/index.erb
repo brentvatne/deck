@@ -1,4 +1,8 @@
-<h1>Your decks</h1>
+<h1>Your decks
+  <p class="new-deck-button-wrapper">
+    <a href="/decks/new" class="button icon big edit">New deck</a>
+  </p>
+</h1>
 
 <% if decks.empty? %>
   <div class="notice inline-notification">
@@ -8,10 +12,7 @@
 <% else %>
   <p>
   <% decks.all.each do |deck| %>
-    <%= link_to deck.name, "/decks/#{deck.id}" %>
+    <%= link_to deck.name, "/decks/#{deck.id}/edit" %>
   <% end %>
-  </p>
-  <p>
-    <a href="/decks/new" class="button big">Create a new deck</a>
   </p>
 <% end %>
