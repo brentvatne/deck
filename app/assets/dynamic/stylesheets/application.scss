@@ -7,6 +7,28 @@
   text-align: center;
 }
 
+.new-deck {
+  input {
+    width: 100%;
+  }
+  input[type=text] {
+    box-sizing: border-box;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 18px;
+    border: 0px;
+    border: 1px dotted #ccc;
+  }
+
+  input[type=submit] {
+    margin-top: 10px;
+  }
+
+  .button {
+    height: 50px;
+  }
+}
+
 .sign-in-button-wrapper {
   padding-top: 10px;
 }
@@ -62,6 +84,7 @@
   margin: 0 auto;
   text-align: right;
   padding-top: 10px;
+
   .separator {
     border-right: 1px dotted #B8B8B8;
     padding-left: 10px;
@@ -81,6 +104,7 @@ body {
   color: #333;
   h1 {
     font-weight: 700;
+    margin-bottom: 20px;
   }
   ul {
     list-style-type: none;

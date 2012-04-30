@@ -1,3 +1,12 @@
-<% decks.each do |deck| %>
-  <%= deck %>
+<h1>Your decks</h1>
+
+<% if decks.empty? %>
+  <div class="notice inline-notification">
+    <p>You haven't created any yet. Go on, you know you want to.</p>
+    <p><a href="/decks/new" class="button big">Create your first deck!</a></p>
+  </div>
+<% else %>
+  <% decks.each do |deck| %>
+    <%= deck %>
+  <% end %>
 <% end %>

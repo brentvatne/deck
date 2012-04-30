@@ -20,7 +20,7 @@ module StarterApp
     end
 
     def decks
-      ["hello", "there"]
+      []
     end
   end
 end

@@ -21,19 +21,24 @@
     display: inline-block;
     margin: 10px 0px 10px 0px;
   }
+}
 
-  &.notice {
-    background-color: #fbf9e1;
-    color: #ada300;
-  }
+.notice {
+  background-color: #fbf9e1;
+  color: #ada300;
+}
 
-  &.success {
-    background-color: #ddffd7;
-    color: #127402;
-  }
+.success {
+  background-color: #ddffd7;
+  color: #127402;
+}
 
-  &.error {
-    background-color: #ffcdd9;
-    color: #680d0d;
-  }
+.error {
+  background-color: #ffcdd9;
+  color: #680d0d;
+}
+
+.inline-notification {
+  padding: 10px 20px 20px 20px;
+  text-align: center;
 }

@@ -1,0 +1,7 @@
+<div class="new-deck">
+  <h1>What should the deck be named?</h1>
+  <% form_tag '/decks/', :method => 'post' do %>
+    <%= text_field_tag :name, :autocomplete => 'off' %>
+    <%= submit_tag "Create it!", :class => 'button big' %>
+  <% end %>
+</div>

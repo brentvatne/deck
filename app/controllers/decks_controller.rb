@@ -9,7 +9,7 @@ module StarterApp
     end
 
     get '/decks/new', :authenticates => true do
-
+      erb 'decks/new'
     end
 
     post '/decks', :authenticates => true do
