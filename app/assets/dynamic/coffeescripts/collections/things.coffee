@@ -2,7 +2,7 @@ class Things extends Backbone.Collection
   initialize: ->
     @on 'reset', @doSomething, this
 
-  model: StarterApp.Thing
+  model: Deck.Thing
 
   doSomething: ->
     # whatever you want
@@ -14,5 +14,5 @@ class Things extends Backbone.Collection
   comparator: (thing) ->
     thing.get('name')
 
-@StarterApp = window.StarterApp || {}
-@StarterApp.Things = new Things
+@Deck = window.Deck || {}
+@Deck.Things = new Things

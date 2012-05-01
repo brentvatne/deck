@@ -2,7 +2,7 @@ describe "Things collection", ->
 
   describe "scopes", ->
     beforeEach ->
-      @things = StarterApp.Things.reset [
+      @things = Deck.Things.reset [
         { thinginess: false },
         { thinginess: true }
       ]

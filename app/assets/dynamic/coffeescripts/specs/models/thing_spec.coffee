@@ -4,9 +4,9 @@ describe "Thing model", ->
 
     describe "isAThing", ->
       it "returns true if thinginess is true", ->
-        thing = new StarterApp.Thing thinginess: true
+        thing = new Deck.Thing thinginess: true
         expect(thing.isAThing()).toBeTruthy()
 
       it "returns false if not important", ->
-        thing = new StarterApp.Thing thinginess: false
+        thing = new Deck.Thing thinginess: false
         expect(thing.isAThing()).toBeFalsy()

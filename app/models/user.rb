@@ -1,6 +1,6 @@
 require_relative "../../config/data_mapper"
 
-module StarterApp
+module DeckApp
   class User
     include DataMapper::Resource
 
@@ -20,7 +20,7 @@ module StarterApp
       first(:email => email).token_pair
     end
 
-    def new_deck(name)
+    def create_deck(name)
       deck = Deck.create(name)
       decks << deck
       save

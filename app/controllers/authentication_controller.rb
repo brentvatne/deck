@@ -1,6 +1,6 @@
 require_relative '../app'
 
-module StarterApp
+module DeckApp
   class App < Sinatra::Application
 
     # Should deal with an edge case:

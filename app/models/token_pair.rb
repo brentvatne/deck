@@ -1,7 +1,7 @@
 require_relative "../../config/data_mapper"
 require 'ostruct'
 
-module StarterApp
+module DeckApp
 
   # It is considered a "TokenPair" because there are two tokens: the access token
   # and the refresh token. The access token has a relatively short life to protect

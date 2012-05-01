@@ -2,7 +2,7 @@ require 'spec_helper'
 require_relative '../../app/models/token_pair'
 require_relative '../../app/models/user'
 
-module StarterApp
+module DeckApp
   describe "token_pair" do
     let(:attrs) {
       { 'token'         => "123",

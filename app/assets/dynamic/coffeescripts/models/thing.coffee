@@ -1,5 +1,5 @@
 class Thing extends Backbone.Model
   isAThing: -> @get("thinginess")
 
-@StarterApp = window.StarterApp || {}
-@StarterApp.Thing = Thing
+@Deck = window.Deck || {}
+@Deck.Thing = Thing

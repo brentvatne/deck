@@ -2,7 +2,7 @@ require 'spec_helper'
 require_relative '../../app/models/user'
 require_relative '../../app/models/token_pair'
 
-module StarterApp
+module DeckApp
   describe "user" do
     let(:omniauth_params) {
       { 'info' => { 'email' => 'brentvatne@gmail.com' },

@@ -12,11 +12,11 @@ use OmniAuth::Builder do
           'https://www.googleapis.com/auth/userinfo.profile'
 
   provider :google_oauth2,
-           StarterApp::GAPI_CLIENT_ID,
-           StarterApp::GAPI_CLIENT_SECRET,
+           DeckApp::GAPI_CLIENT_ID,
+           DeckApp::GAPI_CLIENT_SECRET,
            { :scope  => scope,
              :access => 'offline',
              :approval_prompt => '' }
 end
 
-run StarterApp::App.new
+run DeckApp::App.new

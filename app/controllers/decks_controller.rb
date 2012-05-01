@@ -1,6 +1,6 @@
 require_relative '../app'
 
-module StarterApp
+module DeckApp
   class App < Sinatra::Application
 
     get '/decks', :authenticates => true do
@@ -9,7 +9,7 @@ module StarterApp
     end
 
     post '/decks', :authenticates => true do
-      current_user.new_deck(:name => params[:name])
+      current_user.create_deck(:name => params[:name])
       redirect to('decks')
     end
 
@@ -19,16 +19,27 @@ module StarterApp
 
     get '/decks/:id/edit', :authenticates => true do
       # check if it really belongs to this user
-      erb 'decks/edit'
+      deck = Deck.first(params[:id])
+      erb 'decks/edit', :locals => {:deck => deck}
     end
 
-    get '/decks/:id' do
-
+    get '/decks/:id/slides/new', :authenticates => true do
+      deck = Deck.first(params[:id])
+      erb 'slides/new', :locals => {:deck => deck}
     end
 
     post '/decks/:id/slides', :authenticates => true do
-
+      deck = Deck.first(params[:id])
+      deck.create_slide(params[:content])
+      redirect to("/decks/#{params[:id]}/edit")
     end
 
+    post '/preview' do
+      params[:content] # convert markdown to html
+    end
+
+    get '/decks/:id' do
+      # actual slideshow here
+    end
   end
 end

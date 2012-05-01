@@ -5,7 +5,7 @@ require 'sass'
 require 'coffee-script'
 require_relative '../config/api_credentials'
 
-module StarterApp
+module DeckApp
 
   # This portion of the app handles Sinatra configuration and asset serving.
   class App < Sinatra::Application
@@ -14,8 +14,8 @@ module StarterApp
     enable :sessions
     enable :logging
 
-    set :client_id,     StarterApp::GAPI_CLIENT_ID
-    set :client_secret, StarterApp::GAPI_CLIENT_SECRET
+    set :client_id,     DeckApp::GAPI_CLIENT_ID
+    set :client_secret, DeckApp::GAPI_CLIENT_SECRET
 
     enable :static
     set :root,           File.dirname(__FILE__)

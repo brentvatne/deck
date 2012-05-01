@@ -9,7 +9,7 @@ class AppView extends Backbone.View
     @collection.on 'reset', @doSomething, this
     @enableKeyboardScrolling()
 
-    new StarterApp.SomeNestedView(collection: @collection, app: this)
+    new Deck.SomeNestedView(collection: @collection, app: this)
     if preloadData then @collection.reset(preloadData) else @collection.fetch()
 
   events:
@@ -36,5 +36,5 @@ class AppView extends Backbone.View
     $('.wrap').append(@el)
     @$el.append(@template(a_variable: @date))
 
-@StarterApp = window.StarterApp || {}
-@StarterApp.AppView = AppView
+@Deck = window.Deck || {}
+@Deck.AppView = AppView

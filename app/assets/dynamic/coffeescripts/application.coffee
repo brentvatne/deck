@@ -1,3 +1,3 @@
 $ ->
-  new StarterApp.Router
+  new Deck.Router
   Backbone.history.start({pushState: true})

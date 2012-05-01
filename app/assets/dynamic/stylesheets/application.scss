@@ -3,6 +3,50 @@
 @import 'github_buttons.scss';
 @import 'notifications.scss';
 
+.header {
+  .branding {
+    a {
+      color: #FFF;
+      text-decoration: none;
+      &:hover {
+        color: #F9F9FA;
+      }
+    }
+  }
+}
+
+.slide-edit-area {
+  margin-top: 20px;
+  background-color: #F9F9FA;
+  .content-area {
+    width: 100%;
+    box-sizing: border-box;
+    border: 10px solid #F9F9FA;
+    margin: 0;
+    height: 200px;
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .button-bar {
+    height: 40px;
+    background-color: #F9F9FA;
+    width: 100%;
+    margin-top: -7px;
+    .button {
+      border: none;
+    }
+    .close-button-wrapper {
+      float: left;
+      padding-left: 10px;
+    }
+    .preview-save-button-wrapper {
+      float: right;
+      padding-right: 10px;
+    }
+  }
+}
+
 .home {
   text-align: center;
 }
@@ -12,10 +56,27 @@ h1 {
   position: relative;
 }
 
+.back-link {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  a {
+    text-decoration: none;
+  }
+}
+
 .new-deck-button-wrapper {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 50px;
+  top: 53px;
+  text-align: right;
+  margin-top: 0px;
+}
+
+.new-slide-button-wrapper {
+  position: absolute;
+  right: 50px;
+  top: 53px;
   text-align: right;
   margin-top: 0px;
 }
@@ -77,6 +138,7 @@ h1 {
 
 
 .paper {
+  position: relative;
   width: 700px;
   margin: 0 auto;
   padding: 10px 50px 50px 50px;
@@ -107,6 +169,9 @@ h1 {
     color: #B8B8B8;
     text-decoration: none;
     &.first {
+    }
+    &:visited {
+      color: #B8B8B8;
     }
   }
 }
