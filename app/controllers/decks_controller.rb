@@ -19,17 +19,17 @@ module DeckApp
 
     get '/decks/:id/edit', :authenticates => true do
       # check if it really belongs to this user
-      deck = Deck.first(params[:id])
+      deck = Deck.first(:id => params[:id])
       erb 'decks/edit', :locals => {:deck => deck}
     end
 
     get '/decks/:id/slides/new', :authenticates => true do
-      deck = Deck.first(params[:id])
+      deck = Deck.first(:id => params[:id])
       erb 'slides/new', :locals => {:deck => deck}
     end
 
     post '/decks/:id/slides', :authenticates => true do
-      deck = Deck.first(params[:id])
+      deck = Deck.first(:id => params[:id])
       deck.create_slide(params[:content])
       redirect to("/decks/#{params[:id]}/edit")
     end

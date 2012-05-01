@@ -3,7 +3,7 @@ module DeckApp
     include DataMapper::Resource
 
     belongs_to :user
-    has n, :slides
+    has n,     :slides
 
     property :id,   Serial
     property :name, String, :unique => true

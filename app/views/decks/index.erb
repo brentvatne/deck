@@ -11,8 +11,14 @@
   </div>
 <% else %>
   <p>
-  <% decks.all.each do |deck| %>
-    <%= link_to deck.name, "/decks/#{deck.id}/edit" %>
-  <% end %>
+    <ul class="deck-list">
+    <% decks.all.each do |deck| %>
+      <li>
+      <a href="/decks/<%= deck.id %>/edit" class="deck">
+        <%= deck.name %>
+      </a>
+      </li>
+    <% end %>
+    </ul>
   </p>
 <% end %>
