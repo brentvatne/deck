@@ -6,8 +6,42 @@
 .deck-list {
   list-style-type: none;
   li {
+    text-align: center;
     display: inline-block;
-    vertical-align: top;
+    position: relative;
+    width: 172px;
+    height: 150px;
+    &:hover {
+      a {
+        color: #0E7CC9;
+      }
+      .deck {
+        cursor: pointer;
+        border-color: #B8B8B8;
+        transform:rotate(-10deg);
+        -ms-transform:rotate(-10deg);
+        -moz-transform:rotate(-10deg);
+        -webkit-transform:rotate(-10deg);
+      }
+      .one {
+        transform:rotate(-5deg);
+        -ms-transform:rotate(-5deg);
+        -moz-transform:rotate(-5deg);
+        -webkit-transform:rotate(-5deg);
+      }
+      .two {
+        transform:rotate(0deg);
+        -ms-transform:rotate(0deg);
+        -moz-transform:rotate(0deg);
+        -webkit-transform:rotate(0deg);
+      }
+      .three {
+        transform:rotate(5deg);
+        -ms-transform:rotate(5deg);
+        -moz-transform:rotate(5deg);
+        -webkit-transform:rotate(5deg);
+      }
+    }
   }
   .deck {
     width: 120px;
@@ -22,8 +56,30 @@
     vertical-align: top;
     color: #ABABAB;
     text-decoration: none;
-    &:hover {
-      color: #0E7CC9;
+    z-index: 1000;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    &.background {
+      &.one {
+        z-index: 999;
+        top: 4px;
+        left: 5px;
+      }
+      &.two {
+        z-index: 998;
+        top: 8px;
+        left: 9px;
+      }
+      &.three {
+        z-index: 997;
+        top: 12px;
+        left: 15px;
+      }
     }
   }
 }
