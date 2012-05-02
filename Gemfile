@@ -10,6 +10,7 @@ gem 'omniauth-google-oauth2'
 gem 'thin'
 gem 'coffee-script'
 gem 'therubyracer'
+gem 'redcarpet'
 
 # Assets
 gem 'sass', '~> 3.1.14'

@@ -1,4 +1,4 @@
-<h1>Your decks</h1>
+<h1 class="section-title">Your decks</h1>
 
 <span class="new-deck-button-wrapper">
   <a href="/decks/new" class="button icon edit big">New deck</a>
@@ -10,20 +10,18 @@
     <p><a href="/decks/new" class="button big">Create your first deck!</a></p>
   </div>
 <% else %>
-  <p>
-    <ul class="deck-list">
-    <% decks.all.each do |deck| %>
-      <a href="/decks/<%= deck.id %>/edit" >
-        <li class"deck-stack">
-          <div class="deck">
-            <%= deck.name %>
-          </div>
-          <div class="deck background one"></div>
-          <div class="deck background two"></div>
-          <div class="deck background three"></div>
-        </li>
-      </a>
-    <% end %>
-    </ul>
-  </p>
+  <ul class="deck-list">
+  <% decks.all.each do |deck| %>
+    <a href="/decks/<%= deck.id %>/edit" >
+      <li class"deck-stack">
+        <div class="deck">
+          <%= deck.name %>
+        </div>
+        <div class="deck background one"></div>
+        <div class="deck background two"></div>
+        <div class="deck background three"></div>
+      </li>
+    </a>
+  <% end %>
+  </ul>
 <% end %>

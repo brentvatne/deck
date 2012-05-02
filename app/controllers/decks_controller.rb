@@ -34,6 +34,19 @@ module DeckApp
       redirect to("/decks/#{params[:id]}/edit")
     end
 
+    get '/slides/:id/edit' do
+      slide = Slide.first(:id => params[:id])
+      deck  = slide.deck
+      erb 'slides/edit', :locals => {:deck => deck, :slide => slide}
+    end
+
+    post '/slides/:id' do
+      slide = Slide.first(:id => params[:id])
+      slide.content = params[:content]
+      slide.save
+      redirect to("/slides/#{slide.id}/edit")
+    end
+
     post '/preview' do
       params[:content] # convert markdown to html
     end

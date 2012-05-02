@@ -3,6 +3,23 @@
   <a href="/decks/<%= deck.id %>/slides/new" class="button icon add big">Add slide</a>
 </span>
 
+<div class="new-slide">
+  <div class="slide-edit-area">
+    <% form_tag "/slides/#{slide.id}", :method => 'post' do %>
+      <textarea class="content-area" name="content" rows="" cols=""><%= slide.content %></textarea>
+      <div class="button-bar">
+        <div class="close-button-wrapper">
+          <a href="#" class="button big">Close</a>
+        </div>
+        <div class="button-group preview-save-button-wrapper">
+          <a href="#" class="button big">Preview</a>
+          <input type="submit" class="button big primary">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <% if deck.slides.empty? %>
   <div class="notice inline-notification">
     <p>Make your first slide!</p>
