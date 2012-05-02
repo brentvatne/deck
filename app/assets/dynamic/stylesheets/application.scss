@@ -54,10 +54,10 @@
       .deck {
         border-color: #B8B8B8;
         color: #5C5C5C;
-        transform:rotate(-10deg);
-        -ms-transform:rotate(-10deg);
-        -moz-transform:rotate(-10deg);
-        -webkit-transform:rotate(-10deg);
+        transform:rotate(-15deg);
+        -ms-transform:rotate(-15deg);
+        -moz-transform:rotate(-15deg);
+        -webkit-transform:rotate(-15deg);
       }
 
       .one {
@@ -108,7 +108,7 @@
     z-index: 1000;
     position: absolute;
     top: 0px;
-    left: 0px;
+    left: 20px;
     transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
@@ -117,17 +117,17 @@
       &.one {
         z-index: 999;
         top: 4px;
-        left: 5px;
+        left: 25px;
       }
       &.two {
         z-index: 998;
         top: 8px;
-        left: 9px;
+        left: 30px;
       }
       &.three {
         z-index: 997;
         top: 12px;
-        left: 15px;
+        left: 35px;
       }
     }
   }
