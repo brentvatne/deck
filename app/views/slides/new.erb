@@ -1,3 +1,5 @@
+<h1 class="short-section-title"><%= deck.name %></h1>
+
 <div class="new-slide">
   <div class="slide-edit-area">
     <% form_tag "/decks/#{deck.id}/slides", :method => 'post' do %>
@@ -6,11 +8,21 @@
         <div class="close-button-wrapper">
           <a href="#" class="button big">Close</a>
         </div>
-        <div class="button-group preview-save-button-wrapper">
-          <a href="#" class="button big">Preview</a>
+        <div class="preview-save-button-wrapper">
           <input type="submit" class="button big primary">
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<% unless deck.slides.empty? %>
+  <ul class="slide-list">
+  <% deck.slides.all.each do |slide| %>
+    <a href="/slides/<%= slide.id %>/edit" >
+      <li class="slide-preview">
+        <%= slide.content_as_html %>
+      </li>
+    </a>
+  <% end %>
+<% end %>
