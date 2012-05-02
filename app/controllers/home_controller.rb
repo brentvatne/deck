@@ -1,8 +1,11 @@
 module DeckApp
   class App < Sinatra::Application
     get '/' do
-      session[:uid] = nil
-      erb :home
+      if session[:uid]
+        redirect to('/decks')
+      else
+        erb :home
+      end
     end
   end
 end

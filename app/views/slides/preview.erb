@@ -3,7 +3,11 @@
   <a href="/decks/<%= deck.id %>/slides/new" class="button icon add big">Add slide</a>
 </span>
 
+
 <div class="edit-slide">
+  <div class="preview slide">
+    <%= slide.content_as_html %>
+  </div>
   <div class="slide-edit-area">
     <% form_tag "/slides/#{slide.id}", :method => 'post' do %>
       <textarea class="content-area" name="content" rows="" cols=""><%= slide.content %></textarea>

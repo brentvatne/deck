@@ -40,6 +40,12 @@ module DeckApp
       erb 'slides/edit', :locals => {:deck => deck, :slide => slide}
     end
 
+    get '/slides/:id/preview' do
+      slide = Slide.first(:id => params[:id])
+      deck  = slide.deck
+      erb 'slides/preview', :locals => {:deck => deck, :slide => slide}
+    end
+
     post '/slides/:id' do
       slide = Slide.first(:id => params[:id])
       slide.content = params[:content]

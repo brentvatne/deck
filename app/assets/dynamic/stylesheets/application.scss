@@ -145,9 +145,36 @@
   }
 }
 
-.slide-edit-area {
-  margin-top: 20px;
+.edit-slide {
   background-color: #F9F9FA;
+  border: 1px solid #E4E4E6;
+  border-radius: 5px;
+  .preview-title {
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+}
+
+.slide {
+  border: 1px solid #E4E4E6;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(50, 50, 50, 0.3);
+  p {
+  padding: 0px 20px 0px 20px;
+  }
+}
+
+.preview {
+  width: 100%;
+  box-sizing: border-box;
+  height: 500px;
+  overflow: hidden;
+}
+.slide-edit-area {
+  background-color: #F9F9FA;
+  form {
+    margin-top: 10px;
+  }
   .content-area {
     width: 100%;
     box-sizing: border-box;
@@ -307,6 +334,7 @@ h1 {
 }
 
 body {
+  padding-bottom: 40px;
   vertical-align: baseline;
   background: #F9F9FA;
   color: #333;
