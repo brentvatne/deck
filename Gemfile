@@ -22,6 +22,10 @@ gem 'rake', '~> 0.9.2.2'
 gem 'datamapper', '~> 1.2.0'
 gem 'dm-sqlite-adapter', '~> 1.2.0'
 
+group :development do
+  gem 'debugger'
+end
+
 group :test do
   gem 'rspec', '~> 2.8.0'
   gem 'capybara', '~> 1.1.2'

@@ -9,13 +9,13 @@ module DeckApp
     property :name, String, :unique => true
 
     def create_slide(content)
-      slide = Slide.create(:content => content, :number => next_number)
+      slide = slides.create(:content => content, :number => number_of_slides + 1)
       slides << slide
       save
     end
 
-    def next_number
-      (slides.max(:number) || 0) + 1
+    def number_of_slides
+      (slides.max(:number) || 0)
     end
 
     def slides
@@ -46,8 +46,20 @@ module DeckApp
       second_slide.save
     end
 
-    def delete_slide
-      # move the numbers accordingly
+    def delete_slide(slide)
+      # move every slide to the right of this number to number - 1
+      slide_number = slide.number
+      number_of_slides_before_deleting = number_of_slides
+      slide.destroy
+
+      i = slide_number + 1
+
+      while i <= number_of_slides_before_deleting
+        slide = slides.first(:number => i)
+        slide.number = slide.number - 1
+        slide.save
+        i = i + 1
+      end
     end
   end
 end

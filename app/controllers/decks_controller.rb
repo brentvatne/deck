@@ -9,6 +9,14 @@ module DeckApp
       erb 'decks/index', :locals => {:decks => decks}
     end
 
+    post '/slides/:id', :authenticates => true  do
+      slide = Slide.first(:id => params[:id])
+      slide.content = params[:content]
+      slide.save
+
+      redirect to("/slides/#{slide.id}/edit")
+    end
+
     post '/decks', :authenticates => true do
       current_user.create_deck(:name => params[:name])
 
@@ -33,9 +41,9 @@ module DeckApp
 
     post '/decks/:id/slides', :authenticates => true do
       deck = current_user.decks.first(:id => params[:id])
-      deck.create_slide(params[:content])
+      slide = deck.create_slide(params[:content])
 
-      redirect to("/decks/#{params[:id]}/edit")
+      redirect to("/decks/#{deck.id}/edit")
     end
 
     get '/slides/:id/edit', :authenticates => true do
@@ -43,14 +51,6 @@ module DeckApp
       deck  = slide.deck
 
       erb 'slides/edit', :locals => {:deck => deck, :slide => slide}
-    end
-
-    post '/slides/:id', :authenticates => true  do
-      slide = Slide.first(:id => params[:id])
-      slide.content = params[:content]
-      slide.save
-
-      redirect to("/slides/#{slide.id}/edit")
     end
 
     # ***************************
@@ -80,6 +80,8 @@ module DeckApp
       slide = deck.slides.first(:id => params[:slide_id])
 
       deck.delete_slide(slide)
+
+      redirect to("/decks/#{deck.id}/edit")
     end
 
 
