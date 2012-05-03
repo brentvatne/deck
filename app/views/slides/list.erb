@@ -4,16 +4,16 @@
       <li class="slide-preview">
         <%= slide.content_as_html %>
 
-        <a href="/slides/<%= slide.id %>/delete" class="delete-button">
+        <a href="/decks/<%= deck.id %>/slides/<%= slide.id %>/delete" class="delete-button">
           x
         </a>
         <% if slide.number > 1 %>
-          <a href="/slides/<%= slide.id %>/move-left" class="left-button">
+          <a href="/decks/<%= deck.id %>/slides/<%= slide.id %>/move-left" class="left-button">
             &larr;
           </a>
         <% end %>
         <% if slide.number < slide.deck.slides.count %>
-          <a href="/slides/<%= slide.id %>/move-right" class="right-button">
+          <a href="/decks/<%= deck.id %>/slides/<%= slide.id %>/move-right" class="right-button">
             &rarr;
           </a>
         <% end %>
