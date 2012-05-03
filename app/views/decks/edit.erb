@@ -9,12 +9,5 @@
     <p><a href="/decks/<%= deck.id %>/slides/new" class="button big">Create a slide</a></p>
   </div>
 <% else %>
-  <ul class="slide-list">
-  <% deck.slides.all.each do |slide| %>
-    <a href="/slides/<%= slide.id %>/edit" >
-      <li class="slide-preview">
-        <%= slide.content_as_html %>
-      </li>
-    </a>
-  <% end %>
+  <%= erb 'slides/list', :locals => {:deck => deck} %>
 <% end %>

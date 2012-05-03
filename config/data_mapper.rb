@@ -1,6 +1,7 @@
 require 'dm-core'
 require 'dm-migrations'
 require 'dm-validations'
+require 'dm-aggregates'
 
 DataMapper::Property::String.length(255)
 

@@ -10,6 +10,26 @@
 .slide-list {
   position: relative;
 
+  .delete-button {
+    position: absolute;
+    top: -20px;
+    right: 5px;
+    font-size: 18px;
+  }
+
+  .left-button {
+    position: absolute;
+    bottom: -5px;
+    left: -20px;
+    font-size: 20px;
+  }
+  .right-button {
+    position: absolute;
+    bottom: -5px;
+    right: -20px;
+    font-size: 20px;
+  }
+
   a, a:visited {
     text-decoration: none;
     display: inline-block;
@@ -29,12 +49,24 @@
     vertical-align: top;
     text-decoration: none;
     z-index: 1000;
-    transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
     overflow: hidden;
+    position: relative;
     &:hover {
+      .left-button {
+        left: 5px;
+      }
+      .right-button {
+        right: 5px;
+      }
+      .delete-button {
+        top: 0px;
+      }
+
+
       border-color: #B8B8B8;
       color: #5C5C5C;
     }
