@@ -43,7 +43,7 @@ module DeckApp
     # or initiates the authroization process if the user is not already
     # authorized
     def authenticate
-      if user_logged_in?
+      if user_has_session_cookie? and user_in_database?
         Thread.current['uid'] = session[:uid]
       else
         unless authentication_in_progress?
@@ -52,8 +52,12 @@ module DeckApp
       end
     end
 
-    def user_logged_in?
+    def user_has_session_cookie?
       !!session[:uid]
+    end
+
+    def user_in_database?
+      current_user
     end
 
     def current_user
