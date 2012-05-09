@@ -94,8 +94,8 @@ module DeckApp
     end
 
     get '/decks/:id' do
-      # actual slideshow here
+      deck = Deck.first(:id => params[:id])
+      deck.inspect
     end
-
   end
 end
