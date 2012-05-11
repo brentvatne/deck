@@ -5,8 +5,8 @@
 
 <% if deck.slides.empty? %>
   <div class="notice inline-notification">
-    <p>Make your first slide!</p>
-    <p><a href="/decks/<%= deck.id %>/slides/new" class="button big">Create a slide</a></p>
+    <p class="outside-slide">Make your first slide!</p>
+    <p class="outside-slide"><a href="/decks/<%= deck.id %>/slides/new" class="button big">Create a slide</a></p>
   </div>
 <% else %>
   <%= erb 'slides/list', :locals => {:deck => deck} %>

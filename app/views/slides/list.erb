@@ -1,7 +1,7 @@
 <ul class="slide-list">
   <% deck.slides.all.each do |slide| %>
     <a href="/slides/<%= slide.id %>/edit" >
-      <li class="slide-preview">
+      <li class="micro-slide">
         <%= slide.content_as_html %>
 
         <a href="/decks/<%= deck.id %>/slides/<%= slide.id %>/delete" class="delete-button">
