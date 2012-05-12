@@ -84,6 +84,24 @@ module DeckApp
       redirect to("/decks/#{deck.id}/edit")
     end
 
+    get '/decks/:id' do
+      deck  = Deck.first(:id => params[:id])
+
+      redirect to("/decks/#{deck.id}/slides/#{deck.slides.first.id}")
+    end
+
+    get '/decks/:deck_id/slides/:number' do
+      deck  = Deck.first(:id => params[:deck_id])
+      slide = deck.slides.first(:number => params[:number])
+
+      next_slide = deck.slides.first(:number => params[:number].to_i + 1)
+      prev_slide = deck.slides.first(:number => params[:number].to_i - 1)
+
+      erb 'decks/slideshow', :locals => {:deck => deck,
+                                         :slide => slide,
+                                         :next_slide => next_slide,
+                                         :prev_slide => prev_slide}
+    end
 
     # ****************************
     #       Unimplemented
@@ -91,11 +109,6 @@ module DeckApp
 
     post '/preview' do
       params[:content] # convert markdown to html
-    end
-
-    get '/decks/:id' do
-      deck = Deck.first(:id => params[:id])
-      deck.inspect
     end
   end
 end

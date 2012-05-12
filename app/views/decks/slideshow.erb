@@ -1,0 +1,17 @@
+<div class="slideshow">
+  <div class="slide-wrapper">
+    <div class="slide">
+      <%= slide.content_as_html %>
+    </div>
+  </div>
+</div>
+
+<% if prev_slide %>
+  <a href="/decks/<%= deck.id %>/slides/<%= prev_slide.number %>" 
+     class="scroll-left"></a>
+<% end %>
+
+<% if next_slide %>
+  <a href="/decks/<%= deck.id %>/slides/<%= next_slide.number %>" 
+     class="scroll-right"></a>
+<% end %>

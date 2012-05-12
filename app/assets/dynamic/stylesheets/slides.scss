@@ -1,3 +1,35 @@
+.slideshow {
+  padding-top: 40px;
+}
+
+.scroll-left {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 200px;
+  &:hover {
+    background-color: #000;
+    opacity: 0.5;
+  }
+}
+
+.scroll-right {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  width: 200px;
+  &:hover {
+    background-color: #000;
+    opacity: 0.5;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
 .micro-slide {
   width: 126px;
   height: 120px;
