@@ -8,7 +8,7 @@ module DeckApp
 
     property :id,      Serial
     property :number,  Integer
-    property :content, String
+    property :content, Text
 
     def content_as_html
       render(content)
@@ -18,7 +18,8 @@ module DeckApp
       @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
                                             :autolink => true,
                                             :space_after_headers => true,
-                                            :fenced_code_blocks => true,)
+                                            :fenced_code_blocks => true,
+                                            :superscript => true)
       @markdown.render(markdown_text)
     end
   end
