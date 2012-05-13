@@ -60,8 +60,10 @@ module DeckApp
       current_user
     end
 
-    def current_user
-      @current_user ||= User.first(:email => session[:uid])
+    helpers do
+      def current_user
+        @current_user ||= User.first(:email => session[:uid])
+      end
     end
 
     # Returns TokenPair instance from the session or returns nil

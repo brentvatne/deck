@@ -18,7 +18,7 @@
     window.DeckApp = window.DeckApp || {};
 
     DeckApp.preloadData = {
-      currentUserEmail: "<%= current_user_email %>"
+      currentUserEmail: "<%= current_user.email %>"
     };
   </script>
 </head>
@@ -50,6 +50,7 @@
   <script src='/javascripts/views/app_view.js'></script>
 
   <script src='/javascripts/models/deck.js'></script>
+  <script src='/javascripts/collections/decks.js'></script>
 
 </body>
 </html>

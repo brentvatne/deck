@@ -6,20 +6,24 @@ module DeckApp
 
     # JSON-ified methods
 
-    get '/decks/:id', :authenticates => true do
+    get '/api/decks/:id', :authenticates => true do
       deck = current_user.decks.first(:id => params[:id])
 
       deck.attributes.to_json
     end
 
+    get '/api/decks', :authenticates => true do
+      decks = current_user.decks.all.map do |deck|
+        deck.attributes
+      end
+
+      decks.to_json
+    end
 
     # Old school methods
 
     get '/decks', :authenticates => true do
-      erb 'decks/index', :locals => {
-        :decks => current_user.decks,
-        :current_user_email => current_user.email
-      }
+      erb 'decks/index', :locals => { :decks => current_user.decks }
     end
 
     post '/slides/:id', :authenticates => true  do
@@ -37,7 +41,7 @@ module DeckApp
     end
 
     get '/decks/new', :authenticates => true do
-      erb 'decks/new'
+      erb 'decks/new', :layout => false
     end
 
     get '/decks/:id/edit', :authenticates => true do
