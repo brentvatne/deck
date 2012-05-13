@@ -100,7 +100,8 @@ module DeckApp
       erb 'decks/slideshow', :locals => {:deck => deck,
                                          :slide => slide,
                                          :next_slide => next_slide,
-                                         :prev_slide => prev_slide}
+                                         :prev_slide => prev_slide},
+                             :layout => false
     end
 
     # ****************************

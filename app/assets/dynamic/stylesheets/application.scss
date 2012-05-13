@@ -278,12 +278,27 @@ h1.sharing-with-buttons {
       color: #A9A9A9;
       padding-top: 8px;
     }
+
+    .back-to-deck {
+      float: right;
+      display: inline-block;
+      padding-top: 10px;
+
+      a {
+        color: #BABABA;
+        text-decoration: none;
+        &:hover {
+          color: white;
+        }
+      }
+    }
   }
 }
 
 
 .paper {
   width: 700px;
+  position: relative;
   margin: 0 auto;
   padding: 10px 50px 50px 50px;
   background: #FFF;

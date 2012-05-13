@@ -1,17 +1,62 @@
-<div class="slideshow">
-  <div class="slide-wrapper">
-    <div class="slide">
-      <%= slide.content_as_html %>
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Deck</title>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='/stylesheets/application.css' rel='stylesheet' type='text/css'>
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-wrap">
+      <div class="branding">
+        <%= deck.name %>
+      </div>
+
+      <div class="back-to-deck">
+        <a href="/">back to Deck</a>
+      </div>
     </div>
   </div>
-</div>
 
-<% if prev_slide %>
-  <a href="/decks/<%= deck.id %>/slides/<%= prev_slide.number %>" 
-     class="scroll-left"></a>
-<% end %>
+  <div class="wrap">
+    <div class="paper">
+      <div class="slideshow">
+        <div class="slide-wrapper">
+          <div class="slide">
+            <%= slide.content_as_html %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<% if next_slide %>
-  <a href="/decks/<%= deck.id %>/slides/<%= next_slide.number %>" 
-     class="scroll-right"></a>
-<% end %>
+
+  <% if prev_slide %>
+    <a href="/decks/<%= deck.id %>/slides/<%= prev_slide.number %>" 
+       class="scroll-left"></a>
+  <% end %>
+
+  <% if next_slide %>
+    <a href="/decks/<%= deck.id %>/slides/<%= next_slide.number %>" 
+       class="scroll-right"></a>
+  <% end %>
+
+  <script src='/javascripts/vendor/jquery.js'></script>
+  <script src='/javascripts/vendor/underscore.js'></script>
+  <script src='/javascripts/vendor/backbone.js'></script>
+  <script src='/javascripts/vendor/moment.js'></script>
+  <script src='/javascripts/vendor/highlight.pack.js'></script>
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/monokai.min.css">
+
+</body>
+</html>
