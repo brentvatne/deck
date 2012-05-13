@@ -1,7 +1,19 @@
+require 'json'
 require_relative '../app'
 
 module DeckApp
   class App < Sinatra::Application
+
+    # JSON-ified methods
+
+    get '/decks/:id', :authenticates => true do
+      deck = current_user.decks.first(:id => params[:id])
+
+      deck.attributes.to_json
+    end
+
+
+    # Old school methods
 
     get '/decks', :authenticates => true do
       erb 'decks/index', :locals => {
