@@ -4,19 +4,15 @@ class Router extends Backbone.Router
     "decks/:id": "edit"
 
   home: ->
-    alert 'hello world'
-    #@initializeAppView()
+    @initializeAppView()
 
   edit: (id) ->
     alert id
     # do something with the variable
 
   initializeAppView: ->
-    #unless @appView
-      #@appView = new DeckApp.AppView
-    #    collection: DeckApp.Decks
-    #    preloadData: DeckApp.preloadData
-
+    unless @appView
+      @appView = new DeckApp.AppView
 
 @DeckApp = window.DeckApp || {}
 @DeckApp.Router = Router
