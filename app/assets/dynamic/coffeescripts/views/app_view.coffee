@@ -1,40 +1,38 @@
 class AppView extends Backbone.View
-  id: 'top-level-id-for-the-app-goes-here'
+  class: 'deck-app-wrap'
+
+  template: _.template($('#deck-app-view').html())
 
   initialize: ->
-    preloadData = @options['preloadData']
-
     @render()
 
-    @collection.on 'reset', @doSomething, this
-    @enableKeyboardScrolling()
+    #@collection.on 'reset', @doSomething, this
+    #@enableKeyboardScrolling()
 
-    new Deck.SomeNestedView(collection: @collection, app: this)
-    if preloadData then @collection.reset(preloadData) else @collection.fetch()
+    #new DeckApp.SomeNestedView(collection: @collection, app: this)
+
+    #preloadData = @options['preloadData']
+    #if preloadData then @collection.reset(preloadData) else @collection.fetch()
+
+  render: ->
+    $('#deck').empty()
+    $('#deck').append(@el)
+    @$el.append(@template())
+    #@$el.append(@template(a_variable: "hello"))
 
   events:
-    "click a.some-important-link ": "doAThing"
+    "click a": "doAThing"
 
   doAThing: (e) ->
     e?.preventDefault()
-    Backbone.history.navigate('some-new-path')
-
-  doOtherThing: (e) ->
-    e?.preventDefault()
-    Backbone.history.navigate('some-other-path')
+    alert 'clicked'
+    #Backbone.history.navigate('some-new-path')
 
   enableKeyboardScrolling: ->
-    $('body').keydown (e) =>
-      switch e.keyCode
-        when 37 then @doAThing()
-        when 39 then @doOtherThing()
+    #$('body').keydown (e) =>
+    #  switch e.keyCode
+    #    when 37 then @doAThing()
+    #    when 39 then @doOtherThing()
 
-  template: _.template($('#sample-template').html())
-
-  render: ->
-    $('.wrap').empty()
-    $('.wrap').append(@el)
-    @$el.append(@template(a_variable: @date))
-
-@Deck = window.Deck || {}
-@Deck.AppView = AppView
+@DeckApp = window.DeckApp || {}
+@DeckApp.AppView = AppView

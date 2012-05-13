@@ -7,8 +7,7 @@ class Router extends Backbone.Router
 
   initializeAppView: ->
     unless @appView
-      alert 'hello world'
-    #  @appView = new DeckApp.AppView
+      @appView = new DeckApp.AppView
     #    collection: DeckApp.Decks
     #    preloadData: DeckApp.preloadData
 
