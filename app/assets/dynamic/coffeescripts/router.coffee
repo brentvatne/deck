@@ -1,18 +1,22 @@
 class Router extends Backbone.Router
   routes:
-    "decks": "home"
+    "decks":     "home"
+    "decks/:id": "edit"
 
   home: ->
-    @initializeAppView()
+    alert 'hello world'
+    #@initializeAppView()
+
+  edit: (id) ->
+    alert id
+    # do something with the variable
 
   initializeAppView: ->
-    unless @appView
-      @appView = new DeckApp.AppView
+    #unless @appView
+      #@appView = new DeckApp.AppView
     #    collection: DeckApp.Decks
     #    preloadData: DeckApp.preloadData
 
-  someVariableAction: (variableIsPassedHere) ->
-    # do something with the variable
 
 @DeckApp = window.DeckApp || {}
 @DeckApp.Router = Router

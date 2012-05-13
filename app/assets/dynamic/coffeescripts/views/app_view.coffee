@@ -1,22 +1,23 @@
 class AppView extends Backbone.View
   class: 'deck-app-wrap'
 
-  template: _.template($('#deck-app-view').html())
+  template: _.template($('#deck-app-view-template').html())
 
   initialize: ->
     @render()
 
-    #@collection.on 'reset', @doSomething, this
-    #@enableKeyboardScrolling()
-
-    #new DeckApp.SomeNestedView(collection: @collection, app: this)
-
-    #preloadData = @options['preloadData']
-    #if preloadData then @collection.reset(preloadData) else @collection.fetch()
-
   render: ->
+    @emptyAppViewContainer()
+    @addAppViewElementToContainer()
+    @renderAppViewTemplate()
+
+  emptyAppViewContainer: ->
     $('#deck').empty()
+
+  addAppViewElementToContainer: ->
     $('#deck').append(@el)
+
+  renderAppViewTemplate: ->
     @$el.append(@template())
     #@$el.append(@template(a_variable: "hello"))
 
@@ -27,12 +28,6 @@ class AppView extends Backbone.View
     e?.preventDefault()
     alert 'clicked'
     #Backbone.history.navigate('some-new-path')
-
-  enableKeyboardScrolling: ->
-    #$('body').keydown (e) =>
-    #  switch e.keyCode
-    #    when 37 then @doAThing()
-    #    when 39 then @doOtherThing()
 
 @DeckApp = window.DeckApp || {}
 @DeckApp.AppView = AppView

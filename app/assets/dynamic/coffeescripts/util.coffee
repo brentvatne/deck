@@ -66,5 +66,5 @@ Util =
     @shortDate moment(@parsableDate(date)).add('days', 1)
 
 
-@Deck = window.Deck || {}
-@Deck.Util = Util
+@DeckApp = window.Deck || {}
+@DeckApp.Util = Util
