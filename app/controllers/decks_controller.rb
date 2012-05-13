@@ -4,9 +4,10 @@ module DeckApp
   class App < Sinatra::Application
 
     get '/decks', :authenticates => true do
-      decks = current_user.decks
-
-      erb 'decks/index', :locals => {:decks => decks}
+      erb 'decks/index', :locals => {
+        :decks => current_user.decks,
+        :current_user_email => current_user.email
+      }
     end
 
     post '/slides/:id', :authenticates => true  do

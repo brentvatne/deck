@@ -1,9 +1,10 @@
 class AppView extends Backbone.View
   class: 'deck-app-wrap'
 
-  #template: _.template($('#deck-app-view-template').html())
+  template: _.template($('#deck-app-view-template').html())
 
   initialize: ->
+    @preloadData = @options['preloadData']
     @render()
 
   render: ->
@@ -18,16 +19,16 @@ class AppView extends Backbone.View
     $('#deck').append(@el)
 
   renderAppViewTemplate: ->
-    @$el.append("hello world")
-    #@$el.append(@template(some_variable: "hello world"))
+    @$el.append(@template
+      someVariable: "hello world"
+      currentUserEmail: @preloadData.currentUserEmail)
 
   events:
-    "click a": "doAThing"
+    "click .navigate-home": "home"
 
-  doAThing: (e) ->
+  home: (e) ->
     e?.preventDefault()
-    alert 'clicked'
-    #Backbone.history.navigate('decks/new deck id', true)
+    Backbone.history.navigate('decks', true)
 
 @DeckApp = window.DeckApp || {}
 @DeckApp.AppView = AppView

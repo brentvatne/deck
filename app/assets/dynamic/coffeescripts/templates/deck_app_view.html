@@ -1,4 +1,25 @@
 <script type="text/template" id="deck-app-view-template">
-  <h1> <%= some_variable %> </h1>
-  <p><a href="#">click me</a></p>
+  <div class="header">
+    <div class="header-wrap">
+      <div class="branding">
+        <a href="/" class="navigate-home">Deck</a>
+      </div>
+
+      <div class="user-info">
+        <%= currentUserEmail %>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="paper">
+      <%= someVariable %>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="http://www.twitter.com/notbrent">@notbrent</a>
+    <span class="separator"></span>
+    <a href="http://www.github.com/brentvatne/deck">view the source</a>
+  </div>
 </script>

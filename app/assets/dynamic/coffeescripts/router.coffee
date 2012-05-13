@@ -11,8 +11,8 @@ class Router extends Backbone.Router
     # do something with the variable
 
   initializeAppView: ->
-    unless @appView
-      @appView = new DeckApp.AppView
+    @appView = new DeckApp.AppView
+      preloadData: DeckApp.preloadData
 
 @DeckApp = window.DeckApp || {}
 @DeckApp.Router = Router
