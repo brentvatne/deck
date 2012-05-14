@@ -13,19 +13,9 @@
   <!--[if lt IE 9]>
   <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-
-  <script type="text/javascript">
-    window.DeckApp = window.DeckApp || {};
-
-    DeckApp.preloadData = {
-      currentUserEmail: "<%= current_user.email %>"
-    };
-  </script>
 </head>
 
 <body>
-  <%= template('deck_app_view') %>
-
   <% flash.each do |key, value| %>
     <% unless value.nil? %>
       <div class="notification <%= key %>">
@@ -34,9 +24,6 @@
     <% end %>
   <% end %>
 
-  <div id="deck">
-  </div>
-
   <script src='/javascripts/vendor/jquery.js'></script>
   <script src='/javascripts/vendor/underscore.js'></script>
   <script src='/javascripts/vendor/backbone.js'></script>
@@ -44,13 +31,7 @@
   <script src='/javascripts/vendor/highlight.pack.js'></script>
   <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/monokai.min.css">
 
-  <!-- backbone -->
-  <script src='/javascripts/router.js'></script>
-  <script src='/javascripts/application.js'></script>
-  <script src='/javascripts/views/app_view.js'></script>
-
-  <script src='/javascripts/models/deck.js'></script>
-  <script src='/javascripts/collections/decks.js'></script>
+  <%= yield %>
 
 </body>
 </html>

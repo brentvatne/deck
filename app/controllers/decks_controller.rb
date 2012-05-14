@@ -41,7 +41,7 @@ module DeckApp
     end
 
     get '/decks/new', :authenticates => true do
-      erb 'decks/new', :layout => false
+      erb 'decks/new'
     end
 
     get '/decks/:id/edit', :authenticates => true do

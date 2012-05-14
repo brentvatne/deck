@@ -1,27 +1,21 @@
-<h1 class="section-title">Your decks</h1>
+<%= template('deck_app') %>
+<%= template('deck_icon') %>
 
-<span class="new-deck-button-wrapper">
-  <a href="/decks/new" class="button icon edit big">New deck</a>
-</span>
+<div id="deck"></div>
 
-<% if decks.empty? %>
-  <div class="notice inline-notification">
-    <p class="outside-slide">You haven't created any yet. Go on, you know you want to.</p>
-    <p class="outside-slide"><a href="/decks/new" class="button big">Create your first deck!</a></p>
-  </div>
-<% else %>
-  <ul class="deck-list">
-  <% decks.all.each do |deck| %>
-    <a href="/decks/<%= deck.id %>/edit" >
-      <li class"deck-stack">
-        <div class="deck">
-          <%= deck.name %>
-        </div>
-        <div class="deck background one"></div>
-        <div class="deck background two"></div>
-        <div class="deck background three"></div>
-      </li>
-    </a>
-  <% end %>
-  </ul>
-<% end %>
+<script type="text/javascript">
+  window.DeckApp = window.DeckApp || {};
+
+  DeckApp.preloadData = {
+    currentUserEmail: "<%= current_user.email %>"
+  };
+</script>
+
+<!-- backbone -->
+<script src='/javascripts/router.js'></script>
+<script src='/javascripts/application.js'></script>
+<script src='/javascripts/views/app_view.js'></script>
+<script src='/javascripts/views/deck_icon_view.js'></script>
+
+<script src='/javascripts/models/deck.js'></script>
+<script src='/javascripts/collections/decks.js'></script>

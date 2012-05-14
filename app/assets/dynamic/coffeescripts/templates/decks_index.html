@@ -1,0 +1,16 @@
+<script type="text/template" id="deck-index-template">
+  <h1 class="section-title">Your decks</h1>
+
+  <span class="new-deck-button-wrapper">
+    <a href="/decks/new" class="button icon edit big">New deck</a>
+  </span>
+
+  <% if (decks.length == 0) { %>
+    <div class="notice inline-notification">
+      <p class="outside-slide">You haven't created any yet. Go on, you know you want to.</p>
+      <p class="outside-slide"><a href="/decks/new" class="button big">Create your first deck!</a></p>
+    </div>
+  <% } else { %>
+    <ul class="deck-list"></ul>
+  <% } %>
+</script>

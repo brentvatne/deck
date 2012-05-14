@@ -1,7 +1,7 @@
 class AppView extends Backbone.View
   class: 'deck-app-wrap'
 
-  template: _.template($('#deck-app-view-template').html())
+  template: _.template($('#deck-app-template').html())
 
   initialize: ->
     @preloadData = @options['preloadData']
