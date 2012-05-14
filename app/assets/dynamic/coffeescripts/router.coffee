@@ -1,14 +1,21 @@
 class Router extends Backbone.Router
   routes:
-    "decks":     "home"
-    "decks/:id": "edit"
+    "decks":          "home"
+    "decks/new":      "deckNew"
+    "decks/:id/edit": "deckEdit"
 
   home: ->
-    @initializeAppView()
+    @initializeAppView() unless @appView
+    @appView.showDeckIndex()
     @appView.collection.fetch()
 
-  edit: (id) ->
-    alert id
+  deckNew: ->
+    @initializeAppView() unless @appView
+    @appView.showDeckNew()
+
+  deckEdit: (id) ->
+    @initializeAppView() unless @appView
+    @appView.showDeckEdit(id)
 
   initializeAppView: ->
     @appView = new DeckApp.AppView

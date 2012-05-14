@@ -4,7 +4,9 @@ class AppView extends Backbone.View
   template: _.template($('#deck-app-template').html())
 
   events:
-    "click .navigate-home": "home"
+    "click .navigate-home":  "navigateHome"
+    "click .deck-show-link": "navigateToDeckAction"
+    "click .new-deck-link":  "navigateToDeckAction"
 
   initialize: ->
     @preloadData = @options['preloadData']
@@ -17,18 +19,30 @@ class AppView extends Backbone.View
     @$el.append(@template
       currentUserEmail: @preloadData.currentUserEmail)
 
-    @renderDeckIndex()
+  showDeckIndex: ->
+    @appContentContainer().empty()
 
-  renderDeckIndex: ->
     indexView = new DeckApp.DeckIndexView(collection: @collection)
     @appContentContainer().append(indexView.el)
 
-  appContentContainer: ->
-    @$el.find(".paper")
+  showDeckNew: ->
+    @appContentContainer().empty()
+    @appContentContainer().html('new')
 
-  home: (e) ->
-    e?.preventDefault()
+  showDeckEdit: (id) ->
+    @appContentContainer().empty()
+    @appContentContainer().html("edit #{id}")
+
+  navigateHome: (e) ->
+    e.preventDefault()
     Backbone.history.navigate('decks', true)
+
+  navigateToDeckAction: (e) ->
+    e.preventDefault()
+    path = $(e.currentTarget).attr('href')
+    Backbone.history.navigate(path, true)
+
+  appContentContainer: -> @$el.find(".paper")
 
 @DeckApp = window.DeckApp || {}
 @DeckApp.AppView = AppView

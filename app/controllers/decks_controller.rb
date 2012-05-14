@@ -20,11 +20,25 @@ module DeckApp
       decks.to_json
     end
 
-    # Old school methods
+    # Single page methods
 
     get '/decks', :authenticates => true do
-      erb 'decks/index', :locals => { :decks => current_user.decks }
+      deck = current_user.decks.first(:id => params[:id])
+
+      erb 'single_page', :locals => {:decks => decks}
     end
+
+    get '/decks/new', :authenticates => true do
+      erb 'single_page'
+    end
+
+    get '/decks/:id/edit', :authenticates => true do
+      deck = current_user.decks.first(:id => params[:id])
+
+      erb 'single_page', :locals => {:deck => deck}
+    end
+
+    # Old stuff - not yet api or single page
 
     post '/slides/:id', :authenticates => true  do
       slide = Slide.first(:id => params[:id])
@@ -38,16 +52,6 @@ module DeckApp
       current_user.create_deck(:name => params[:name])
 
       redirect to('decks')
-    end
-
-    get '/decks/new', :authenticates => true do
-      erb 'decks/new'
-    end
-
-    get '/decks/:id/edit', :authenticates => true do
-      deck = current_user.decks.first(:id => params[:id])
-
-      erb 'decks/edit', :locals => {:deck => deck}
     end
 
     get '/decks/:id/slides/new', :authenticates => true do
