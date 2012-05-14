@@ -3,27 +3,28 @@ class AppView extends Backbone.View
 
   template: _.template($('#deck-app-template').html())
 
+  events:
+    "click .navigate-home": "home"
+
   initialize: ->
     @preloadData = @options['preloadData']
     @render()
 
   render: ->
-    @emptyAppViewContainer()
-    @addAppViewElementToContainer()
-    @renderAppViewTemplate()
-
-  emptyAppViewContainer: ->
     $('#deck').empty()
-
-  addAppViewElementToContainer: ->
     $('#deck').append(@el)
 
-  renderAppViewTemplate: ->
     @$el.append(@template
       currentUserEmail: @preloadData.currentUserEmail)
 
-  events:
-    "click .navigate-home": "home"
+    @renderDeckIndex()
+
+  renderDeckIndex: ->
+    indexView = new DeckApp.DeckIndexView(collection: @collection)
+    @appContentContainer().append(indexView.el)
+
+  appContentContainer: ->
+    @$el.find(".paper")
 
   home: (e) ->
     e?.preventDefault()

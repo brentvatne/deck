@@ -5,14 +5,15 @@ class Router extends Backbone.Router
 
   home: ->
     @initializeAppView()
+    @appView.collection.fetch()
 
   edit: (id) ->
     alert id
-    # do something with the variable
 
   initializeAppView: ->
     @appView = new DeckApp.AppView
       preloadData: DeckApp.preloadData
+      collection: DeckApp.Decks
 
 @DeckApp = window.DeckApp || {}
 @DeckApp.Router = Router
