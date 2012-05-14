@@ -11,7 +11,6 @@ module DeckApp
   class App < Sinatra::Application
     register Padrino::Helpers
 
-    enable :sessions
     enable :logging
 
     set :client_id,     DeckApp::GAPI_CLIENT_ID
