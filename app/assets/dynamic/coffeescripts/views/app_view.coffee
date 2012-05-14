@@ -20,7 +20,6 @@ class AppView extends Backbone.View
 
   renderAppViewTemplate: ->
     @$el.append(@template
-      someVariable: "hello world"
       currentUserEmail: @preloadData.currentUserEmail)
 
   events:
