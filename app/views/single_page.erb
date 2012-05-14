@@ -1,6 +1,8 @@
 <%= template('deck_app') %>
 <%= template('deck_icon') %>
 <%= template('deck_index') %>
+<%= template('deck_new') %>
+<%= template('notification') %>
 
 <div id="deck"></div>
 
@@ -15,9 +17,11 @@
 <!-- backbone -->
 <script src='/javascripts/router.js'></script>
 <script src='/javascripts/application.js'></script>
+<script src='/javascripts/util.js'></script>
 <script src='/javascripts/views/app_view.js'></script>
 <script src='/javascripts/views/deck_icon_view.js'></script>
 <script src='/javascripts/views/deck_index_view.js'></script>
+<script src='/javascripts/views/deck_new_view.js'></script>
 
 <script src='/javascripts/models/deck.js'></script>
 <script src='/javascripts/collections/decks.js'></script>

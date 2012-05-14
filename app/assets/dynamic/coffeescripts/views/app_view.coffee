@@ -19,19 +19,24 @@ class AppView extends Backbone.View
     @$el.append(@template
       currentUserEmail: @preloadData.currentUserEmail)
 
+    @appContentContainer = @$el.find(".paper")
+
   showDeckIndex: ->
-    @appContentContainer().empty()
+    @appContentContainer.empty()
 
     indexView = new DeckApp.DeckIndexView(collection: @collection)
-    @appContentContainer().append(indexView.el)
+    @appContentContainer.append(indexView.el)
 
   showDeckNew: ->
-    @appContentContainer().empty()
-    @appContentContainer().html('new')
+    @appContentContainer.empty()
+
+    newView = new DeckApp.DeckNewView(collection: @collection)
+    newView.render()
+    @appContentContainer.append(newView.el)
 
   showDeckEdit: (id) ->
-    @appContentContainer().empty()
-    @appContentContainer().html("edit #{id}")
+    @appContentContainer.empty()
+    @appContentContainer.html("edit #{id}")
 
   navigateHome: (e) ->
     e.preventDefault()
@@ -41,8 +46,6 @@ class AppView extends Backbone.View
     e.preventDefault()
     path = $(e.currentTarget).attr('href')
     Backbone.history.navigate(path, true)
-
-  appContentContainer: -> @$el.find(".paper")
 
 @DeckApp = window.DeckApp || {}
 @DeckApp.AppView = AppView

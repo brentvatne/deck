@@ -24,6 +24,8 @@ module DeckApp
       deck = Deck.create(name)
       decks << deck
       save
+
+      deck
     end
   end
 end

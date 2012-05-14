@@ -1,4 +1,5 @@
 class Decks extends Backbone.Collection
+
   url: '/api/decks'
 
   model: DeckApp.Deck

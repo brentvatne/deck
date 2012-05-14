@@ -51,6 +51,20 @@ module DeckApp
         template_file = File.join(settings.template_dir, relative_path + ".html")
         if File.exists?(template_file) then File.read(template_file) else "" end
       end
+
+      def json_params
+        @json_params ||= JSONParamsWrapper.new(request.body)
+      end
+
+      class JSONParamsWrapper
+        def initialize(body)
+          @parsed_request_body = JSON.parse(body.read)
+        end
+
+        def [](key)
+          @parsed_request_body[key.to_s]
+        end
+      end
     end
 
     private

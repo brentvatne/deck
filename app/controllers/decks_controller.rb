@@ -20,10 +20,16 @@ module DeckApp
       decks.to_json
     end
 
+    post '/api/decks', :authenticates => true do
+     deck = current_user.create_deck(:name => json_params[:name])
+
+      deck.attributes.to_json
+    end
+
     # Single page methods
 
     get '/decks', :authenticates => true do
-      deck = current_user.decks.first(:id => params[:id])
+      decks = current_user.decks.all
 
       erb 'single_page', :locals => {:decks => decks}
     end

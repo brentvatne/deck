@@ -1,8 +1,12 @@
 class Router extends Backbone.Router
   routes:
+    "":               "root"
     "decks":          "home"
     "decks/new":      "deckNew"
     "decks/:id/edit": "deckEdit"
+
+  root: ->
+    Backbone.history.navigate("decks", true)
 
   home: ->
     @initializeAppView() unless @appView
