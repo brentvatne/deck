@@ -1,3 +1,11 @@
+code {
+  border-radius: 3px;
+  padding: 0 5px;
+  margin: 0 2px;
+  border: 1px solid #EAEAEA;
+  background-color: #F8F8F8;
+}
+
 .slideshow {
   padding-top: 40px;
 }
@@ -78,6 +86,8 @@
 .slide {
   position: relative;
 
+  color: #222;
+
   border: 1px solid #E4E4E6;
   border-radius: 5px;
   width: 698px;
@@ -123,17 +133,19 @@
     padding-top: 10px;
   }
 
+  h1, h2, h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
   h1 {
     font-size: 73px;
-    line-height: 73px * 1.3;
-    margin-top:20px;
-    margin: 0px 0px 0px 0px;
+    line-height: 73px * 1.5;
   }
 
   h2 {
     font-size: 56px;
-    line-height: 56px * 1.3;
-    margin: 0px 0px 0px 0px;
+    line-height: 56px * 1.5;
   }
 
   h3 {
@@ -156,11 +168,20 @@
     line-height: 18px * 1.3;
   }
 
+  strong {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+
   // Lists
 
   ul {
     $bullet-offset: 10px;
     padding-left: $padding + $bullet-offset;
+    padding-bottom: 15px;
 
     li:before { 
       content:"-"; 
