@@ -22,8 +22,8 @@ class DeckNewView extends Backbone.View
   saveNewDeck: (name) ->
     @deck = new DeckApp.Deck
     @deck.save name: name,
-      success: @navigateToEdit.bind(this)
-      error:   @displayServerError.bind(this)
+      success: _.bind(@navigateToEdit, this)
+      error:   _.bind(@displayServerError, this)
 
   navigateToEdit: ->
     @displaySuccessNotification()

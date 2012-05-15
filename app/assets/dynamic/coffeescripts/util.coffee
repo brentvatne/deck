@@ -22,5 +22,10 @@ Util =
     notification_template = _.template($('#notification-template').html())
     notification_template(params)
 
+  highlightCodeBlock: (block) ->
+    codeBlocks = block.find('pre code')
+    if codeBlocks
+      codeBlocks.each (i, e) -> hljs.highlightBlock(e)
+
 @DeckApp = window.DeckApp || {}
 @DeckApp.Util = Util

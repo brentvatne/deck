@@ -15,7 +15,9 @@ module DeckApp
      deck = Deck.first(:id => params[:id])
 
       slides = deck.slides.all.map do |slide|
-        slide.attributes
+        attributes = slide.attributes
+        attributes[:content] = slide.content_as_html
+        attributes
       end
 
       slides.to_json

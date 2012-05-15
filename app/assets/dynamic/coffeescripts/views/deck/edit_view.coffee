@@ -1,28 +1,31 @@
 class DeckEditView extends Backbone.View
-  class: 'deck-edit-wrap'
 
   template: _.template($('#deck-edit-template').html())
 
   initialize: ->
-    @model = new DeckApp.Deck(id: @options.id)
-    @model.fetch
-      success: @render.bind(this)
-      error:   @invalidID.bind(this)
+    @model         = new DeckApp.Deck(id: @options.id)
+    @slides        = new DeckApp.Slides(deckID: @options.id)
+    @slideListView = new DeckApp.SlideListView(collection: @slides)
 
-    # instantiate new slides collection
-    # set the url to according to the id of @model
-    # fetch it
+    @model.fetch
+      success: _.bind(@render, this)
+      error:   _.bind(@invalidID, this)
 
   render: ->
     @$el.html(@template(@model.toJSON()))
 
-    # render slide list
+    @slides.fetch()
+    @$el.append(@slideListView.el)
+
 
   invalidID: (model, response) ->
+    console.log model
+    console.log response
     DeckApp.Util.displayNotification
       type:    'error'
       message: "A deck with an id of #{model.get('id')} does not exist, " +
                "or is inaccessible to you for editing."
+
     Backbone.history.navigate('decks', true)
 
 @DeckApp = window.DeckApp || {}
