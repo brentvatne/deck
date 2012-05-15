@@ -1,21 +1,49 @@
-<h1 class="short-section-title outside-slide"><%= deck.name %></h1>
+<div class="header">
+  <div class="header-wrap">
+    <div class="branding">
+      <a href="/" class="navigate-home">Deck</a>
+    </div>
 
-<div class="new-slide">
-  <div class="slide-edit-area">
-    <% form_tag "/decks/#{deck.id}/slides", :method => 'post' do %>
-      <%= text_area_tag :content, :class => 'content-area' %>
-      <div class="button-bar">
-        <div class="close-button-wrapper">
-          <a href="#" class="button big">Close</a>
-        </div>
-        <div class="preview-save-button-wrapper">
-          <input type="submit" class="button big primary" value="Save">
-        </div>
-      </div>
-    <% end %>
+    <div class="user-info">
+      <%= current_user.email %>
+    </div>
   </div>
 </div>
 
-<% unless deck.slides.empty? %>
-  <%= erb 'slides/list', :locals => {:deck => deck} %>
-<% end %>
+<div class="wrap">
+  <div class="paper">
+
+  <!-- actual template here -->
+
+  <h1 class="short-section-title outside-slide"><%= deck.name %></h1>
+
+  <div class="new-slide">
+    <div class="slide-edit-area">
+      <% form_tag "/decks/#{deck.id}/slides", :method => 'post' do %>
+        <%= text_area_tag :content, :class => 'content-area' %>
+        <div class="button-bar">
+          <div class="close-button-wrapper">
+            <a href="#" class="button big">Close</a>
+          </div>
+          <div class="preview-save-button-wrapper">
+            <input type="submit" class="button big primary" value="Save">
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% unless deck.slides.empty? %>
+    <%= erb 'slides/list', :locals => {:deck => deck} %>
+  <% end %>
+
+  <!-- end of template -->
+
+  </div>
+</div>
+
+<div class="footer">
+  <a href="http://www.twitter.com/notbrent">@notbrent</a>
+  <span class="separator"></span>
+  <a href="http://www.github.com/brentvatne/deck">view the source</a>
+</div>

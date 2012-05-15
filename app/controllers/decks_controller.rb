@@ -4,12 +4,21 @@ require_relative '../app'
 module DeckApp
   class App < Sinatra::Application
 
-    # JSON-ified methods
-
-    get '/api/decks/:id', :authenticates => true do
-      deck = current_user.decks.first(:id => params[:id])
+    # API Methods
+    get '/api/decks/:id' do
+      deck = Deck.first(:id => params[:id])
 
       deck.attributes.to_json
+    end
+
+    get '/api/decks/:id/slides' do
+     deck = Deck.first(:id => params[:id])
+
+      slides = deck.slides.all.map do |slide|
+        slide.attributes
+      end
+
+      slides.to_json
     end
 
     get '/api/decks', :authenticates => true do
@@ -27,7 +36,6 @@ module DeckApp
     end
 
     # Single page methods
-
     get '/decks', :authenticates => true do
       decks = current_user.decks.all
 
@@ -45,7 +53,6 @@ module DeckApp
     end
 
     # Old stuff - not yet api or single page
-
     post '/slides/:id', :authenticates => true  do
       slide = Slide.first(:id => params[:id])
       slide.content = params[:content]
@@ -73,9 +80,9 @@ module DeckApp
       redirect to("/decks/#{deck.id}/edit")
     end
 
-    get '/slides/:id/edit', :authenticates => true do
-      slide = Slide.first(:id => params[:id])
-      deck  = slide.deck
+    get '/decks/:deck_id/slides/:id/edit', :authenticates => true do
+      deck  = current_user.decks.first(:id => params[:deck_id])
+      slide = deck.slides.first(:id => params[:id])
 
       erb 'slides/edit', :locals => {:deck => deck, :slide => slide}
     end

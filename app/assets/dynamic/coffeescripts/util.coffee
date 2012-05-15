@@ -1,5 +1,4 @@
 Util =
-
   vibratePaper: ->
     @vibrateElement $('#deck .paper')
 

@@ -36,7 +36,9 @@ class AppView extends Backbone.View
 
   showDeckEdit: (id) ->
     @appContentContainer.empty()
-    @appContentContainer.html("edit #{id}")
+
+    editView = new DeckApp.DeckEditView(id: id)
+    @appContentContainer.append(editView.el)
 
   navigateHome: (e) ->
     e.preventDefault()

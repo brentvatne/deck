@@ -1,0 +1,21 @@
+<script type="text/template" id="deck-edit-template">
+  <h1 class="section-title"><%= name %></h1>
+  <span class="new-slide-button-wrapper">
+    <a href="/decks/<%= id %>" class="button icon approve big present-deck-link">Present</a>
+    <a href="/decks/<%= id %>/slides/new" class="button icon add big new-slide-link">Add slide</a>
+  </span>
+
+  <!-- if (slides.length == 0) { -->
+  <% if (true) { %>
+    <div class="notice inline-notification">
+      <p class="outside-slide">Make your first slide!</p>
+      <p class="outside-slide">
+        <a href="/decks/<%= id %>/slides/new" class="button big new-slide-link">Create a slide</a>
+      </p>
+    </div>
+  <% } else { %>
+    <div class="slide-list-container">
+      <!-- output slides here -->
+    </div>
+  <% } %>
+</script>

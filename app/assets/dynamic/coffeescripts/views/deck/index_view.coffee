@@ -8,14 +8,12 @@ class DeckIndexView extends Backbone.View
 
   render: ->
     @$el.html(@template(number_of_decks: @collection.length))
+    @deckListContainer = @$el.find('.deck-list')
 
     _.each(@collection.models, (deck) =>
       iconView = new DeckApp.DeckIconView(model: deck)
-      @deckListContainer().append(iconView.render())
+      @deckListContainer.append(iconView.render())
     )
-
-  deckListContainer: ->
-    @$el.find('.deck-list')
 
 @DeckApp = window.DeckApp || {}
 @DeckApp.DeckIndexView = DeckIndexView
