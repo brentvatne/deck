@@ -123,7 +123,7 @@ module DeckApp
     get '/decks/:id' do
       deck  = Deck.first(:id => params[:id])
 
-      redirect to("/decks/#{deck.id}/slides/#{deck.slides.first.id}")
+      redirect to("/decks/#{deck.id}/slides/1")
     end
 
     get '/decks/:deck_id/slides/:number' do
