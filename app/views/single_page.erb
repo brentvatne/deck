@@ -1,5 +1,6 @@
 <%= template('app') %>
-<%= template('notification') %>
+<%= template('util/notification') %>
+<%= template('util/loading_notification') %>
 <%= template('deck/icon') %>
 <%= template('deck/index') %>
 <%= template('deck/new') %>
@@ -20,6 +21,8 @@
 <!-- backbone -->
 <script src='/javascripts/router.js'></script>
 <script src='/javascripts/application.js'></script>
+<script src='/javascripts/views/util/loading_notification_view.js'></script>
+
 <script src='/javascripts/util.js'></script>
 
 <script src='/javascripts/views/app_view.js'></script>
