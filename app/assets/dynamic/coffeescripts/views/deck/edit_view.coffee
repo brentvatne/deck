@@ -17,10 +17,7 @@ class DeckEditView extends Backbone.View
     @slides.fetch()
     @$el.append(@slideListView.el)
 
-
   invalidID: (model, response) ->
-    console.log model
-    console.log response
     DeckApp.Util.displayNotification
       type:    'error'
       message: "A deck with an id of #{model.get('id')} does not exist, " +

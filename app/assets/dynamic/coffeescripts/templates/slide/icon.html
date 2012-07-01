@@ -1,19 +1,17 @@
 <script type="text/template" id="slide-icon-template">
-  <a href="/decks/<%= deckID %>/slides/<%= id %>/edit">
-    <%= content %>
+  <%= content %>
 
-    <a href="/decks/<%= deckID %>/slides/<%= id %>/delete" class="delete-button">x</a>
+  <a href="/decks/<%= deckID %>/slides/<%= id %>/delete" class="delete-button">x</a>
 
-    <% if (! isFirstSlide) { %>
-      <a href="/decks/<%= deckID %>/slides/<%= id %>/move-left" class="left-button">
-        &larr;
-      </a>
-      <% } %>
+  <% if (! isFirstSlide) { %>
+    <a href="/decks/<%= deckID %>/slides/<%= id %>/move-left" class="left-button">
+      &larr;
+    </a>
+    <% } %>
 
-    <% if (! isLastSlide) { %>
-      <a href="/decks/<%= deckID %>/slides/<%= id %>/move-right" class="right-button">
-        &rarr;
-      </a>
-      <% } %>
-  </a>
+  <% if (! isLastSlide) { %>
+    <a href="/decks/<%= deckID %>/slides/<%= id %>/move-right" class="right-button">
+      &rarr;
+    </a>
+    <% } %>
 </script>
