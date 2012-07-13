@@ -1,10 +1,13 @@
-class SlideListView extends Backbone.View
+class SlideIconListView extends Backbone.View
 
   template: _.template($('#slide-list-template').html())
 
   initialize: ->
     @collection.on 'reset',  @render, this
     @collection.on 'change', @render, this
+
+  reloadSlides: ->
+    @collection.fetch()
 
   render: ->
     @$el.html(@template
@@ -15,6 +18,8 @@ class SlideListView extends Backbone.View
 
   renderIcons: ->
     _.each(@collection.models, (slide) =>
+      slide.on 'sync', @reloadSlides, this
+
       iconView = new DeckApp.SlideIconView
         model:        slide
         deckID:       @collection.deckID
@@ -29,10 +34,7 @@ class SlideListView extends Backbone.View
     slide.get('number') == 1
 
   isLastSlide: (slide) ->
-    slide.get('number') == @numberOfSlides()
-
-  numberOfSlides: ->
-    @collection.length
+    slide.get('number') == @collection.length
 
 @DeckApp = window.DeckApp || {}
-@DeckApp.SlideListView = SlideListView
+@DeckApp.SlideIconListView = SlideIconListView

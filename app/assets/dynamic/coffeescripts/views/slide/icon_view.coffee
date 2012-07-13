@@ -10,22 +10,40 @@ class SlideIconView extends Backbone.View
     'click .delete-button': 'deleteSlide'
 
   editSlide: (e) ->
+    # navigate to new url
     console.log "edit slide"
 
   moveSlideRight: (e) ->
-    console.log 'move right'
+    $.ajax
+      type: 'POST'
+      url: @model.url() + '/move-right',
+      success: => @model.trigger('sync')
+      error: @ohShit
+
     e.preventDefault()
     e.stopPropagation()
 
   moveSlideLeft: (e) ->
-    console.log 'move left'
+    $.ajax
+      type: 'POST'
+      url: @model.url() + '/move-left',
+      success: => @model.trigger('sync')
+      error: @ohShit
+
     e.preventDefault()
     e.stopPropagation()
 
   deleteSlide: (e) ->
-    console.log 'delete slide'
+    @model.destroy
+      error: @ohShit
+
     e.preventDefault()
     e.stopPropagation()
+
+  ohShit: ->
+    DeckApp.Util.displayNotification
+      type:    'error'
+      message: 'Uh oh that didnt work :( Try again!'
 
   template: _.template($('#slide-icon-template').html())
 

@@ -3,9 +3,9 @@ class DeckEditView extends Backbone.View
   template: _.template($('#deck-edit-template').html())
 
   initialize: ->
-    @model         = new DeckApp.Deck(id: @options.id)
-    @slides        = new DeckApp.Slides(deckID: @options.id)
-    @slideListView = new DeckApp.SlideListView(collection: @slides)
+    @model             = new DeckApp.Deck(id: @options.id)
+    @slides            = new DeckApp.Slides(deckID: @options.id)
+    @slideIconListView = new DeckApp.SlideIconListView(collection: @slides)
 
     @model.fetch
       success: _.bind(@render, this)
@@ -15,7 +15,7 @@ class DeckEditView extends Backbone.View
     @$el.html(@template(@model.toJSON()))
 
     @slides.fetch()
-    @$el.append(@slideListView.el)
+    @$el.append(@slideIconListView.el)
 
   invalidID: (model, response) ->
     DeckApp.Util.displayNotification

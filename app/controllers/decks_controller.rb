@@ -37,6 +37,27 @@ module DeckApp
       deck.attributes.to_json
     end
 
+    delete '/api/decks/:deck_id/slides/:slide_id', :authenticates => true do
+      deck  = current_user.decks.first(:id => params[:deck_id])
+      slide = deck.slides.first(:id => params[:slide_id])
+
+      deck.delete_slide(slide)
+    end
+
+    post '/api/decks/:deck_id/slides/:slide_id/move-left', :authenticates => true do
+      deck  = current_user.decks.first(:id => params[:deck_id])
+      slide = deck.slides.first(:id => params[:slide_id])
+
+      deck.move_slide_left(slide)
+    end
+
+    post '/api/decks/:deck_id/slides/:slide_id/move-right', :authenticates => true do
+      deck  = current_user.decks.first(:id => params[:deck_id])
+      slide = deck.slides.first(:id => params[:slide_id])
+
+      deck.move_slide_right(slide)
+    end
+
     # Single page methods
     get '/decks', :authenticates => true do
       decks = current_user.decks.all
@@ -92,33 +113,6 @@ module DeckApp
     # ***************************
     #  Move, edit, delete slides
     # ***************************
-
-    get '/decks/:deck_id/slides/:slide_id/move-left', :authenticates => true do
-      deck  = current_user.decks.first(:id => params[:deck_id])
-      slide = deck.slides.first(:id => params[:slide_id])
-
-      deck.move_slide_left(slide)
-
-      redirect to("/decks/#{deck.id}/edit")
-    end
-
-    get '/decks/:deck_id/slides/:slide_id/move-right', :authenticates => true do
-      deck  = current_user.decks.first(:id => params[:deck_id])
-      slide = deck.slides.first(:id => params[:slide_id])
-
-      deck.move_slide_right(slide)
-
-      redirect to("/decks/#{deck.id}/edit")
-    end
-
-    get '/decks/:deck_id/slides/:slide_id/delete', :authenticates => true do
-      deck  = current_user.decks.first(:id => params[:deck_id])
-      slide = deck.slides.first(:id => params[:slide_id])
-
-      deck.delete_slide(slide)
-
-      redirect to("/decks/#{deck.id}/edit")
-    end
 
     get '/decks/:id' do
       deck  = Deck.first(:id => params[:id])

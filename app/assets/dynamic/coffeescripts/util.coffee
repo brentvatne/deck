@@ -16,16 +16,23 @@ Util =
       element.trigger('stopRumble')
     ), 300
 
+  # Public: Adds a notification to the body.
+  #
+  # options - An object literal that describes the notification
+  #           type    - Is it an error or a notice? eg 'error' 'notice'
+  #           message - What do you want to say? eg 'Could not find the thing'
+  #
+  # No useful return value, purely side effects
   displayNotification: (options) ->
     @removeAnyNotifications()
-    new_notification = @notification(options)
+    new_notification = @renderNotification(options)
     $('body').prepend new_notification
     $('body').find('.notification').delay(3500).slideUp(600)
 
   removeAnyNotifications: ->
     $('body .notification').remove()
 
-  notification: (params) ->
+  renderNotification: (params) ->
     notification_template = _.template($('#notification-template').html())
     notification_template(params)
 
