@@ -5,6 +5,7 @@ class SlideIconListView extends Backbone.View
 
   initialize: ->
     da.app.instances.slideIconListView = this
+    da.app.instances.slideIconViews    = []
 
     @slides = @collection
     @slides.on 'reset',        @render,       this
@@ -13,26 +14,11 @@ class SlideIconListView extends Backbone.View
     @render()
 
   render: ->
-    return unless @slides.models
-
     @$el.empty()
 
-    _.each(@slides.models, (slide) =>
+    _.each @slides.models, (slide) =>
       slide.on 'change:order', @render, this
-
-      iconView = new da.views.SlideIconView
-        slide:        slide
-        isFirstSlide: @isFirstSlide(slide)
-        isLastSlide:  @isLastSlide(slide)
-
-      @$el.append iconView.el
-    )
-
-  isFirstSlide: (slide) ->
-    slide.get('number') == 1
-
-  isLastSlide: (slide) ->
-    slide.get('number') == @slides.length
+      @$el.append (new da.views.SlideIconView(slide: slide)).el
 
 @da = window.da
 @da.views.SlideIconListView = SlideIconListView

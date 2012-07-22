@@ -12,23 +12,17 @@ class SlideIconView extends Backbone.View
   template: _.template($('#slide-icon-template').html())
 
   initialize: (options) ->
-    da.app.instances.slideIconView ||= {}
-    da.app.instances.slideIconView << this
+    da.app.instances.slideIconViews.push(this)
 
-    @slide        = options.slide
-    @isFirstSlide = options.isFirstSlide
-    @isLastSlide  = options.isLastSlide
-
+    @slide = options.slide
     @slide.on 'change', @render, this
+
     @render()
 
   render: ->
-    params =
-      isLastSlide:  @isLastSlide
-      isFirstSlide: @isFirstSlide
+    @$el.html @template(@slide.toJSON())
+    @$el.data 'slide-id', @slide.get('id')
 
-    @$el.html(@template(_.extend(@slide.toJSON(), params)))
-    @$el.data('slide-id', @slide.get('id'))
     da.ui.highlightCodeBlock(@$el)
 
   editSlide: (e) ->

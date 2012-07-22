@@ -3,12 +3,10 @@ class DeckEditView extends Backbone.View
   template: _.template($('#deck-edit-template').html())
 
   initialize: (options) ->
+    da.app.instances.deckEditView = this
+
     @deck   = new da.models.Deck(id: options.id)
     @slides = new da.collections.Slides(deckID: options.id)
-
-    da.app.instances = {}
-    da.app.instances.deck = @deck
-    da.app.instances.slides = @slides
 
     @deck.fetch
       success: _.bind(@renderContainer, this)

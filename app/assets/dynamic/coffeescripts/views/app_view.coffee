@@ -12,6 +12,7 @@ class AppView extends Backbone.View
     preloadData = options['preloadData']
 
     da.app = this
+    @instances   = {}
     @content     = {}
     @currentUser = new da.models.CurrentUser(email: preloadData.currentUserEmail)
 
