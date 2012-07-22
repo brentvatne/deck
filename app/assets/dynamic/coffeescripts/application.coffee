@@ -1,3 +1,3 @@
 $ ->
-  new DeckApp.Router
+  new D.Router
   Backbone.history.start({pushState: true})

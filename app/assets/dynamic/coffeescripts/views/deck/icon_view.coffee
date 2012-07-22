@@ -5,8 +5,11 @@ class DeckIconView extends Backbone.View
 
   template: _.template($('#deck-icon-template').html())
 
+  initialize: ->
+    @model.on 'sync', @render, this
+
   render: ->
     @$el.html(@template(@model.toJSON()))
 
-@DeckApp = window.DeckApp || {}
-@DeckApp.DeckIconView = DeckIconView
+@D = window.D || {}
+@D.DeckIconView = DeckIconView

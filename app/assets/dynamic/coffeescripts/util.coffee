@@ -1,6 +1,6 @@
 Util =
   showLoading: ->
-    @loadingNotification = new DeckApp.Util.LoadingNotificationView
+    @loadingNotification = new D.Util.LoadingNotificationView
     $('.paper').append(@loadingNotification.el)
 
   hideLoading: ->
@@ -41,5 +41,5 @@ Util =
     if codeBlocks
       codeBlocks.each (i, e) -> hljs.highlightBlock(e)
 
-@DeckApp = window.DeckApp     || {}
-@DeckApp.Util = _.extend(@DeckApp.Util, Util)
+@D = window.D     || {}
+@D.Util = _.extend(@D.Util, Util)

@@ -2,7 +2,7 @@ class Decks extends Backbone.Collection
 
   url: '/api/decks'
 
-  model: DeckApp.Deck
+  model: D.Deck
 
-@DeckApp = window.DeckApp || {}
-@DeckApp.Decks = new Decks
+@D = window.D || {}
+@D.Decks = new Decks

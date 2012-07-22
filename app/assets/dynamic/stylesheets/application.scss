@@ -4,6 +4,16 @@
 @import 'notifications.scss';
 @import 'slides.scss';
 
+*[draggable=true] {
+  -moz-user-select:none;
+  -khtml-user-drag: element;
+  cursor: move !important;
+}
+
+*:-khtml-drag {
+  background-color: rgba(238,238,238, 0.5);
+}
+
 .section-title {
   padding-bottom: 40px;
 }

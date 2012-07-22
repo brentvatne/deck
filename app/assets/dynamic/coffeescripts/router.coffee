@@ -22,9 +22,9 @@ class Router extends Backbone.Router
     @appView.showDeckEdit(id)
 
   initializeAppView: ->
-    @appView = new DeckApp.AppView
-      preloadData: DeckApp.preloadData
-      collection: DeckApp.Decks
+    @appView = new D.AppView
+      preloadData: D.preloadData
+      collection: D.Decks
 
-@DeckApp = window.DeckApp || {}
-@DeckApp.Router = Router
+@D = window.D || {}
+@D.Router = Router

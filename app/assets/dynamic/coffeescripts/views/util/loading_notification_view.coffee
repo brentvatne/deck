@@ -10,6 +10,6 @@ class LoadingNotificationView extends Backbone.View
   render: ->
     @$el.html(@template())
 
-@DeckApp = window.DeckApp     || {}
-@DeckApp.Util = @DeckApp.Util || {}
-@DeckApp.Util.LoadingNotificationView = LoadingNotificationView
+@D = window.D     || {}
+@D.Util = @D.Util || {}
+@D.Util.LoadingNotificationView = LoadingNotificationView

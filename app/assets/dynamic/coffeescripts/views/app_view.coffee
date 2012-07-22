@@ -24,20 +24,21 @@ class AppView extends Backbone.View
   showDeckIndex: ->
     @appContentContainer.empty()
 
-    indexView = new DeckApp.DeckIndexView(collection: @collection)
+    indexView = new D.DeckIndexView(collection: @collection)
     @appContentContainer.append(indexView.el)
 
   showDeckNew: ->
     @appContentContainer.empty()
 
-    newView = new DeckApp.DeckNewView(collection: @collection)
+    newView = new D.DeckNewView(collection: @collection)
     newView.render()
     @appContentContainer.append(newView.el)
 
   showDeckEdit: (id) ->
     @appContentContainer.empty()
 
-    editView = new DeckApp.DeckEditView(id: id)
+    D.currentDeckID = id
+    editView = new D.DeckEditView
     @appContentContainer.append(editView.el)
 
   navigateHome: (e) ->
@@ -49,5 +50,5 @@ class AppView extends Backbone.View
     path = $(e.currentTarget).attr('href')
     Backbone.history.navigate(path, true)
 
-@DeckApp = window.DeckApp || {}
-@DeckApp.AppView = AppView
+@D = window.D || {}
+@D.AppView = AppView

@@ -1,12 +1,9 @@
 class Slides extends Backbone.Collection
 
   url: ->
-    "/api/decks/#{@deckID}/slides"
+    "/api/decks/#{D.currentDeckID}/slides"
 
-  model: DeckApp.Slide
+  model: D.Slide
 
-  initialize: (options) ->
-    @deckID = options.deckID
-
-@DeckApp = window.DeckApp || {}
-@DeckApp.Slides = Slides
+@D = window.D || {}
+@D.Slides = new Slides

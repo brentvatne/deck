@@ -17,7 +17,7 @@ class SlideIconView extends Backbone.View
     $.ajax
       type: 'POST'
       url: @model.url() + '/move-right',
-      success: => @model.trigger('sync')
+      success: -> D.Slides.trigger('change:order')
       error: @ohShit
 
     e.preventDefault()
@@ -27,7 +27,7 @@ class SlideIconView extends Backbone.View
     $.ajax
       type: 'POST'
       url: @model.url() + '/move-left',
-      success: => @model.trigger('sync')
+      success: -> D.Slides.trigger('change:order')
       error: @ohShit
 
     e.preventDefault()
@@ -41,7 +41,7 @@ class SlideIconView extends Backbone.View
     e.stopPropagation()
 
   ohShit: ->
-    DeckApp.Util.displayNotification
+    D.Util.displayNotification
       type:    'error'
       message: 'Uh oh that didnt work :( Try again!'
 
@@ -49,21 +49,21 @@ class SlideIconView extends Backbone.View
 
   initialize: (options) ->
     @model        = @options.model
-    @deckID       = @options.deckID
     @isFirstSlide = @options.isFirstSlide
     @isLastSlide  = @options.isLastSlide
 
     @model.on 'change', @render, this
 
+
   render: ->
     params =
-      deckID:       @deckID
+      deckID:       D.currentDeckID
       isLastSlide:  @isLastSlide
       isFirstSlide: @isFirstSlide
 
     @$el.html(@template(_.extend(@model.toJSON(), params)))
     @$el.data('slide-id', @model.get('id'))
-    DeckApp.Util.highlightCodeBlock(@$el)
+    D.Util.highlightCodeBlock(@$el)
 
-@DeckApp = window.DeckApp || {}
-@DeckApp.SlideIconView = SlideIconView
+@D = window.D || {}
+@D.SlideIconView = SlideIconView
