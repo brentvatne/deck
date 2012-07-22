@@ -11,5 +11,5 @@ class DeckIconView extends Backbone.View
   render: ->
     @$el.html(@template(@model.toJSON()))
 
-@D = window.D || {}
-@D.DeckIconView = DeckIconView
+@da = window.da
+@da.views.DeckIconView = DeckIconView

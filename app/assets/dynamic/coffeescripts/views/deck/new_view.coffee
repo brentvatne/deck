@@ -6,6 +6,9 @@ class DeckNewView extends Backbone.View
   events:
     'submit form': 'createNewDeck'
 
+  initialize: ->
+    @render()
+
   render: ->
     @$el.html(@template())
     @nameField = @$el.find('.deck-name-input')
@@ -20,7 +23,7 @@ class DeckNewView extends Backbone.View
       @saveNewDeck(@nameField.val())
 
   saveNewDeck: (name) ->
-    @deck = new D.Deck
+    @deck = new da.models.Deck
     @deck.save name: name,
       success: _.bind(@navigateToEdit, this)
       error:   _.bind(@displayServerError, this)
@@ -30,23 +33,23 @@ class DeckNewView extends Backbone.View
     Backbone.history.navigate("/decks/#{@deck.get('id')}/edit", true)
 
   displaySuccessNotification: ->
-    D.Util.displayNotification
+    da.ui.displayNotification
       type:    'success'
       message: 'Your new deck has been created'
 
   displayInvalidNameError: ->
-    D.Util.vibratePaper()
-    D.Util.displayNotification
+    da.ui.vibratePaper()
+    da.ui.displayNotification
       type:    'error'
       message: 'You can\'t leave the name blank! Please provide one'
 
   displayServerError: ->
-    D.Util.displayNotification
+    da.ui.displayNotification
       type:    'error'
       message: 'Something went wrong on the server, try again in a few minutes.'
 
   nameIsBlank: ->
     @nameField.val() == ""
 
-@D = window.D || {}
-@D.DeckNewView = DeckNewView
+@da = window.da
+@da.views.DeckNewView = DeckNewView

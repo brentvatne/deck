@@ -9,6 +9,25 @@ class SlideIconView extends Backbone.View
     'click .left-button':   'moveSlideLeft'
     'click .delete-button': 'deleteSlide'
 
+  template: _.template($('#slide-icon-template').html())
+
+  initialize: (options) ->
+    @model        = @options.model
+    @isFirstSlide = @options.isFirstSlide
+    @isLastSlide  = @options.isLastSlide
+
+    @model.on 'change', @render, this
+
+  render: ->
+    params =
+      deckID:       da.app.currentDeck.get('id')
+      isLastSlide:  @isLastSlide
+      isFirstSlide: @isFirstSlide
+
+    @$el.html(@template(_.extend(@model.toJSON(), params)))
+    @$el.data('slide-id', @model.get('id'))
+    da.ui.highlightCodeBlock(@$el)
+
   editSlide: (e) ->
     # navigate to new url
     console.log "edit slide"
@@ -17,7 +36,7 @@ class SlideIconView extends Backbone.View
     $.ajax
       type: 'POST'
       url: @model.url() + '/move-right',
-      success: -> D.Slides.trigger('change:order')
+      success: -> da.app.slides.trigger('change:order')
       error: @ohShit
 
     e.preventDefault()
@@ -27,7 +46,7 @@ class SlideIconView extends Backbone.View
     $.ajax
       type: 'POST'
       url: @model.url() + '/move-left',
-      success: -> D.Slides.trigger('change:order')
+      success: -> da.app.slides.trigger('change:order')
       error: @ohShit
 
     e.preventDefault()
@@ -41,29 +60,9 @@ class SlideIconView extends Backbone.View
     e.stopPropagation()
 
   ohShit: ->
-    D.Util.displayNotification
+    da.ui.displayNotification
       type:    'error'
       message: 'Uh oh that didnt work :( Try again!'
 
-  template: _.template($('#slide-icon-template').html())
-
-  initialize: (options) ->
-    @model        = @options.model
-    @isFirstSlide = @options.isFirstSlide
-    @isLastSlide  = @options.isLastSlide
-
-    @model.on 'change', @render, this
-
-
-  render: ->
-    params =
-      deckID:       D.currentDeckID
-      isLastSlide:  @isLastSlide
-      isFirstSlide: @isFirstSlide
-
-    @$el.html(@template(_.extend(@model.toJSON(), params)))
-    @$el.data('slide-id', @model.get('id'))
-    D.Util.highlightCodeBlock(@$el)
-
-@D = window.D || {}
-@D.SlideIconView = SlideIconView
+@da = window.da
+@da.views.SlideIconView = SlideIconView

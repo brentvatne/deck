@@ -4,16 +4,16 @@ class DeckIndexView extends Backbone.View
   template: _.template($('#deck-index-template').html())
 
   initialize: ->
-    D.Util.showLoading()
+    da.ui.showLoading()
     @collection.on 'reset', @render, this
 
   render: ->
-    D.Util.hideLoading()
+    da.ui.hideLoading()
 
-    @$el.html(@template(number_of_decks: @collection.length))
+    @$el.html(@template(numberOfDecks: @collection.length))
 
     _.each(@collection.models, (deck) =>
-      iconView = new D.DeckIconView(model: deck)
+      iconView = new da.views.DeckIconView(model: deck)
       @deckListContainer().append(iconView.render())
     )
 
@@ -22,5 +22,5 @@ class DeckIndexView extends Backbone.View
   deckListContainer: ->
     @$el.find('.deck-list')
 
-@D = window.D || {}
-@D.DeckIndexView = DeckIndexView
+@da = window.da
+@da.views.DeckIndexView = DeckIndexView

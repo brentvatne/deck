@@ -8,38 +8,44 @@ class AppView extends Backbone.View
     "click .deck-show-link": "navigateToDeckAction"
     "click .new-deck-link":  "navigateToDeckAction"
 
-  initialize: ->
-    @preloadData = @options['preloadData']
+  initialize: (options) ->
+    preloadData = options['preloadData']
+
+    da.app = this
+
+    @decks       = new da.collections.Decks
+    @slides      = new da.collections.Slides
+    @currentUser = new da.models.CurrentUser(email: preloadData.currentUserEmail)
+
     @render()
 
   render: ->
     $('#deck').empty()
     $('#deck').append(@el)
 
-    @$el.append(@template
-      currentUserEmail: @preloadData.currentUserEmail)
+    @$el.append @template(currentUserEmail: @currentUser.get('email'))
 
-    @appContentContainer = @$el.find(".paper")
+    @$content = @$el.find(".paper")
 
   showDeckIndex: ->
-    @appContentContainer.empty()
+    @$content.empty()
 
-    indexView = new D.DeckIndexView(collection: @collection)
-    @appContentContainer.append(indexView.el)
+    indexView = new da.views.DeckIndexView(collection: @decks)
+    @$content.append(indexView.el)
+
+    @decks.fetch()
 
   showDeckNew: ->
-    @appContentContainer.empty()
+    @$content.empty()
 
-    newView = new D.DeckNewView(collection: @collection)
-    newView.render()
-    @appContentContainer.append(newView.el)
+    newView = new da.views.DeckNewView(collection: @decks)
+    @$content.append(newView.el)
 
   showDeckEdit: (id) ->
-    @appContentContainer.empty()
+    @$content.empty()
 
-    D.currentDeckID = id
-    editView = new D.DeckEditView
-    @appContentContainer.append(editView.el)
+    editView = new da.views.DeckEditView(id: id)
+    @$content.append(editView.el)
 
   navigateHome: (e) ->
     e.preventDefault()
@@ -50,5 +56,5 @@ class AppView extends Backbone.View
     path = $(e.currentTarget).attr('href')
     Backbone.history.navigate(path, true)
 
-@D = window.D || {}
-@D.AppView = AppView
+@da = window.da
+@da.views.AppView = AppView

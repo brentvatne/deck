@@ -11,7 +11,6 @@ class Router extends Backbone.Router
   home: ->
     @initializeAppView() unless @appView
     @appView.showDeckIndex()
-    @appView.collection.fetch()
 
   deckNew: ->
     @initializeAppView() unless @appView
@@ -22,9 +21,8 @@ class Router extends Backbone.Router
     @appView.showDeckEdit(id)
 
   initializeAppView: ->
-    @appView = new D.AppView
-      preloadData: D.preloadData
-      collection: D.Decks
+    @appView = new da.views.AppView
+      preloadData: da.preloadData
 
-@D = window.D || {}
-@D.Router = Router
+@da = window.da
+@da.Router = Router

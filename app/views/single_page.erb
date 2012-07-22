@@ -1,6 +1,6 @@
 <%= template('app') %>
-<%= template('util/notification') %>
-<%= template('util/loading_notification') %>
+<%= template('ui/notification') %>
+<%= template('ui/loading_notification') %>
 <%= template('deck/icon') %>
 <%= template('deck/index') %>
 <%= template('deck/new') %>
@@ -11,9 +11,13 @@
 <div id="deck"></div>
 
 <script type="text/javascript">
-  window.D = window.D || {};
+  da             = {};
+  da.models      = {};
+  da.collections = {};
+  da.views       = {};
+  da.ui          = {};
 
-  D.preloadData = {
+  da.preloadData = {
     currentUserEmail: "<%= current_user.email %>"
   };
 </script>
@@ -21,9 +25,9 @@
 <!-- backbone -->
 <script src='/javascripts/router.js'></script>
 <script src='/javascripts/application.js'></script>
-<script src='/javascripts/views/util/loading_notification_view.js'></script>
+<script src='/javascripts/views/ui/loading_notification_view.js'></script>
 
-<script src='/javascripts/util.js'></script>
+<script src='/javascripts/ui.js'></script>
 
 <script src='/javascripts/views/app_view.js'></script>
 
@@ -37,6 +41,7 @@
 
 <script src='/javascripts/models/deck.js'></script>
 <script src='/javascripts/models/slide.js'></script>
+<script src='/javascripts/models/current_user.js'></script>
 
 <script src='/javascripts/collections/decks.js'></script>
 <script src='/javascripts/collections/slides.js'></script>
