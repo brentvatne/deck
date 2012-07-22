@@ -12,8 +12,6 @@ class AppView extends Backbone.View
     preloadData = options['preloadData']
 
     da.app = this
-    @instances   = {}
-    @content     = {}
     @currentUser = new da.models.CurrentUser(email: preloadData.currentUserEmail)
 
     @render()
@@ -27,19 +25,19 @@ class AppView extends Backbone.View
     @$content = @$el.find(".paper")
 
   showDeckIndex: ->
-    @$content.empty()
+    @clearContainers()
 
     @content = new da.views.DeckIndexView
     @$content.append(@content.el)
 
   showDeckNew: ->
-    @$content.empty()
+    @clearContainers()
 
     @content = new da.views.DeckNewView
     @$content.append(@content.el)
 
   showDeckEdit: (id) ->
-    @$content.empty()
+    @clearContainers()
 
     @content = new da.views.DeckEditView(id: id)
     @$content.append(@content.el)
@@ -52,6 +50,10 @@ class AppView extends Backbone.View
     e.preventDefault()
     path = $(e.currentTarget).attr('href')
     Backbone.history.navigate(path, true)
+
+  clearContainers: ->
+    @$content.empty()
+    @instances = {}
 
 @da = window.da
 @da.views.AppView = AppView

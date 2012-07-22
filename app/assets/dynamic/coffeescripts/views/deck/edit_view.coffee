@@ -22,7 +22,7 @@ class DeckEditView extends Backbone.View
     if @slides.length == 0
       @slideView = new da.views.EmptySlideListView
     else
-      @slideView = new da.views.SlideIconListView(collection: @slides)
+      @slideView = new da.views.SlideListView(collection: @slides)
 
     @$el.append(@slideView.el)
 
