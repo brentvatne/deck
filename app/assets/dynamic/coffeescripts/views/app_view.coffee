@@ -12,9 +12,7 @@ class AppView extends Backbone.View
     preloadData = options['preloadData']
 
     da.app = this
-
-    @decks       = new da.collections.Decks
-    @slides      = new da.collections.Slides
+    @content     = {}
     @currentUser = new da.models.CurrentUser(email: preloadData.currentUserEmail)
 
     @render()
@@ -30,22 +28,20 @@ class AppView extends Backbone.View
   showDeckIndex: ->
     @$content.empty()
 
-    indexView = new da.views.DeckIndexView(collection: @decks)
-    @$content.append(indexView.el)
-
-    @decks.fetch()
+    @content = new da.views.DeckIndexView
+    @$content.append(@content.el)
 
   showDeckNew: ->
     @$content.empty()
 
-    newView = new da.views.DeckNewView(collection: @decks)
-    @$content.append(newView.el)
+    @content = new da.views.DeckNewView
+    @$content.append(@content.el)
 
   showDeckEdit: (id) ->
     @$content.empty()
 
-    editView = new da.views.DeckEditView(id: id)
-    @$content.append(editView.el)
+    @content = new da.views.DeckEditView(id: id)
+    @$content.append(@content.el)
 
   navigateHome: (e) ->
     e.preventDefault()

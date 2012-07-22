@@ -3,26 +3,30 @@ class DeckEditView extends Backbone.View
   template: _.template($('#deck-edit-template').html())
 
   initialize: (options) ->
-    da.app.currentDeck = new da.models.Deck(id: options['id'])
+    @deck   = new da.models.Deck(id: options.id)
+    @slides = new da.collections.Slides(deckID: options.id)
 
-    da.app.currentDeck.fetch
+    da.app.instances = {}
+    da.app.instances.deck = @deck
+    da.app.instances.slides = @slides
+
+    @deck.fetch
       success: _.bind(@renderContainer, this)
       error:   _.bind(@invalidID, this)
 
   renderContainer: ->
-    @$el.html @template(da.app.currentDeck.toJSON())
+    @$el.html @template(@deck.toJSON())
 
-    da.app.slides.fetch
+    @slides.fetch
       success: _.bind(@renderSlides, this)
 
   renderSlides: ->
-    if da.app.slides.length == 0
-      slideView = new da.views.EmptySlideListView
+    if @slides.length == 0
+      @slideView = new da.views.EmptySlideListView
     else
-      slideView = new da.views.SlideIconListView
+      @slideView = new da.views.SlideIconListView(collection: @slides)
 
-    @$el.append(slideView.el)
-
+    @$el.append(@slideView.el)
 
   invalidID: (model, response) ->
     da.ui.displayNotification

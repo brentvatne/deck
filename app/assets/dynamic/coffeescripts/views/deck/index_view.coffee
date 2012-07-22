@@ -5,14 +5,17 @@ class DeckIndexView extends Backbone.View
 
   initialize: ->
     da.ui.showLoading()
-    @collection.on 'reset', @render, this
+
+    @decks = new da.collections.Decks
+    @decks.on 'reset', @render, this
+    @decks.fetch()
 
   render: ->
     da.ui.hideLoading()
 
-    @$el.html(@template(numberOfDecks: @collection.length))
+    @$el.html(@template(numberOfDecks: @decks.length))
 
-    _.each(@collection.models, (deck) =>
+    _.each(@decks.models, (deck) =>
       iconView = new da.views.DeckIconView(model: deck)
       @deckListContainer().append(iconView.render())
     )
