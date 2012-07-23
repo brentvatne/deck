@@ -24,7 +24,7 @@ class SlideListView extends Backbone.View
 
     _.each @slides.models, (slide) =>
       slide.on 'reorder', @reloadSlides, this
-      slide.on 'error:reorder',   @render,       this
+      slide.on 'error:reorder', @render, this
       @$el.append (new da.views.SlideIconView(slide: slide)).el
 
     @$el.sortable(items: '.micro-slide')

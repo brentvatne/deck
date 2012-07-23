@@ -24,7 +24,7 @@ module DeckApp
     end
 
     get '/api/decks', :authenticates => true do
-      decks = current_user.decks.all.map do |deck|
+      decks = current_user.decks.all.reverse.map do |deck|
         deck.attributes
       end
 
@@ -42,20 +42,6 @@ module DeckApp
       slide = deck.slides.first(:id => params[:slide_id])
 
       deck.delete_slide(slide)
-    end
-
-    post '/api/decks/:deck_id/slides/:slide_id/move-left', :authenticates => true do
-      deck  = current_user.decks.first(:id => params[:deck_id])
-      slide = deck.slides.first(:id => params[:slide_id])
-
-      deck.move_slide_left(slide)
-    end
-
-    post '/api/decks/:deck_id/slides/:slide_id/move-right', :authenticates => true do
-      deck  = current_user.decks.first(:id => params[:deck_id])
-      slide = deck.slides.first(:id => params[:slide_id])
-
-      deck.move_slide_right(slide)
     end
 
     post '/api/decks/:deck_id/slides/:slide_id/update-position', :authenticates => true do

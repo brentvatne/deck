@@ -5,8 +5,6 @@ class SlideIconView extends Backbone.View
 
   events:
     'click':                'editSlide'
-    'click .right-button':  'moveSlideRight'
-    'click .left-button':   'moveSlideLeft'
     'click .delete-button': 'deleteSlide'
 
   template: _.template $('#slide-icon-template').html()
@@ -29,34 +27,15 @@ class SlideIconView extends Backbone.View
     # navigate to new url
     console.log "edit slide"
 
-  moveSlideRight: (e) ->
-    $.ajax
-      type: 'POST'
-      url: @slide.url() + '/move-right',
-      success: => @slide.trigger('change:order')
-      error: @ohShit
-
-    e.preventDefault()
-    e.stopPropagation()
-
-  moveSlideLeft: (e) ->
-    $.ajax
-      type: 'POST'
-      url: @slide.url() + '/move-left',
-      success: => @slide.trigger('change:order')
-      error: @ohShit
-
-    e.preventDefault()
-    e.stopPropagation()
-
   deleteSlide: (e) ->
+    @remove()
     @slide.destroy
-      error: @ohShit
+      error: @displayDestroyFailedError
 
     e.preventDefault()
     e.stopPropagation()
 
-  ohShit: ->
+  displayDestroyFailedError: ->
     da.ui.displayNotification
       type:    'error'
       message: 'Uh oh that didnt work :( Try again!'
