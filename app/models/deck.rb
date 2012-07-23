@@ -22,6 +22,21 @@ module DeckApp
       super.all(:order => [ :number.asc ])
     end
 
+    # Terribly inefficient but I don't care right now
+    # Will need to do some kind of query like update all where
+    # number > new_position so number = number + 1
+    def update_slide_position(slide, new_position)
+      return unless slides.include?(slide)
+
+      until new_position == slide.number
+        if slide.number > new_position
+          move_slide_left(slide)
+        else
+          move_slide_right(slide)
+        end
+      end
+    end
+
     def move_slide_left(slide)
       unless slide == slides.first
         swap_slides(slide, slides.first(:number => slide.number - 1))

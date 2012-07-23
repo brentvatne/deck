@@ -58,6 +58,13 @@ module DeckApp
       deck.move_slide_right(slide)
     end
 
+    post '/api/decks/:deck_id/slides/:slide_id/update-position', :authenticates => true do
+      deck  = current_user.decks.first(:id => params[:deck_id])
+      slide = deck.slides.first(:id => params[:slide_id])
+
+      deck.update_slide_position(slide, params[:number].to_i)
+    end
+
     # Single page methods
     get '/decks', :authenticates => true do
       decks = current_user.decks.all

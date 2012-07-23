@@ -2,19 +2,17 @@ class Slide extends Backbone.Model
 
   urlRoot: '/api/slides'
 
-  updatePosition: (newPosition, options) ->
-    console.log newPosition
-    return
-
+  saveNewPosition: (newPosition, options) ->
     $.ajax
       type: 'POST'
       data: { number: newPosition  }
-      url: @url() + '/change-position',
-      success: =>
-        @trigger('change:number')
-        @options.success?.call?()
+      url: @url() + '/update-position',
+      success: (data) =>
+        @trigger('reorder')
+        options.success?.call?()
       error: =>
-        @options.error?.call?()
+        @trigger('error:reorder')
+        options.error?.call?()
 
 @da = window.da
 @da.models.Slide = Slide
