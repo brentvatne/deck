@@ -1,7 +1,7 @@
 class DeckListView extends Backbone.View
-  class: 'deck-list'
+  tagName: 'ul'
 
-  template: _.template($('#deck-index-template').html())
+  className: 'deck-list'
 
   initialize: ->
     da.ui.showLoading()
@@ -13,17 +13,9 @@ class DeckListView extends Backbone.View
   render: ->
     da.ui.hideLoading()
 
-    @$el.html(@template(numberOfDecks: @decks.length))
-
-    _.each(@decks.models, (deck) =>
+    _.each @decks.models, (deck) =>
       iconView = new da.views.DeckIconView(model: deck)
-      @deckListContainer().append(iconView.render())
-    )
-
-  # Private: Refers to the element rendered out by the deck-index-template
-  # which contains the deck list items.
-  deckListContainer: ->
-    @$el.find('.deck-list')
+      @$el.append iconView.render()
 
 @da = window.da
 @da.views.DeckListView = DeckListView
