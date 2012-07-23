@@ -11,7 +11,7 @@
 }
 
 *:-khtml-drag {
-  background-color: rgba(238,238,238, 0.5);
+  background-color: rgba(238,238,238, 1.0);
 }
 
 .section-title {
@@ -20,25 +20,17 @@
 
 .slide-list {
   position: relative;
+  padding-left: 10px;
+
+  .sortable-placeholder {
+    display: inline-block;
+  }
 
   .delete-button {
     position: absolute;
     top: -20px;
     right: 5px;
     font-size: 18px;
-  }
-
-  .left-button {
-    position: absolute;
-    bottom: -5px;
-    left: -20px;
-    font-size: 20px;
-  }
-  .right-button {
-    position: absolute;
-    bottom: -5px;
-    right: -20px;
-    font-size: 20px;
   }
 
   a, a:visited {

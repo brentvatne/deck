@@ -9,7 +9,7 @@ class SlideIconView extends Backbone.View
     'click .left-button':   'moveSlideLeft'
     'click .delete-button': 'deleteSlide'
 
-  template: _.template($('#slide-icon-template').html())
+  template: _.template $('#slide-icon-template').html()
 
   initialize: (options) ->
     da.app.instances.slideIconViews.push(this)
@@ -21,7 +21,7 @@ class SlideIconView extends Backbone.View
 
   render: ->
     @$el.html @template(@slide.toJSON())
-    @$el.data 'slide-id', @slide.get('id')
+    @$el.attr 'data-id', @slide.get('id')
 
     da.ui.highlightCodeBlock(@$el)
 
