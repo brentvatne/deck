@@ -1,5 +1,5 @@
-class DeckIndexView extends Backbone.View
-  class: 'deck-index-wrap'
+class DeckListView extends Backbone.View
+  class: 'deck-list'
 
   template: _.template($('#deck-index-template').html())
 
@@ -26,4 +26,4 @@ class DeckIndexView extends Backbone.View
     @$el.find('.deck-list')
 
 @da = window.da
-@da.views.DeckIndexView = DeckIndexView
+@da.views.DeckListView = DeckListView
