@@ -4,9 +4,9 @@ class AppView extends Backbone.View
   template: _.template($('#deck-app-template').html())
 
   events:
-    "click .navigate-home":  "navigateHome"
-    "click .deck-show-link": "navigateToDeckAction"
-    "click .new-deck-link":  "navigateToDeckAction"
+    "click .navigate-home":    "navigateHome"
+    "click .deck-show-button": "navigateToDeckAction"
+    "click .new-deck-button":  "navigateToDeckAction"
 
   initialize: (options) ->
     preloadData = options['preloadData']

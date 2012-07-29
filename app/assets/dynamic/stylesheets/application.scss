@@ -25,7 +25,9 @@
 }
 
 .section-title {
-  padding: 0px 10px 30px 10px;
+  padding: 0px 10px 20px 10px;
+  border-bottom: 1px solid #DDD;
+  margin-bottom: 30px;
   vertical-align: top;
 }
 
@@ -251,12 +253,48 @@ h1.sharing-with-buttons {
   margin-top: 0px;
 }
 
-.new-slide-button-wrapper {
+.deck-action-buttons {
   position: absolute;
   right: 50px;
   top: 50px;
   text-align: right;
   margin-top: 0px;
+}
+
+.new-deck-button:before {
+  padding-top: 1px;
+  display: inline-block;
+  vertical-align: top;
+  font-family: 'IconicStroke';
+  content:'\e01f';
+  padding-right: 8px;
+  font-size: 18px;
+}
+
+.present-deck-button:before {
+  padding-top: 1px;
+  display: inline-block;
+  vertical-align: top;
+  font-family: 'IconicStroke';
+  content:'\e048';
+  padding-right: 8px;
+  font-size: 18px;
+}
+
+.present-deck-button {
+  padding-bottom: 9px;
+}
+
+.new-slide-button:before {
+  padding-top: 1px;
+  display: inline-block;
+  vertical-align: top;
+  font-family: 'IconicStroke';
+  content:'\e059';
+  padding-right: 8px;
+  padding-bottom: 2px;
+  font-size: 18px;
+
 }
 
 .new-deck {

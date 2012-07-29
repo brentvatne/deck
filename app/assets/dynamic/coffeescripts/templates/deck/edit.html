@@ -1,7 +1,7 @@
 <script type="text/template" id="deck-edit-template">
   <h1 class="section-title"><%= name %></h1>
-  <span class="new-slide-button-wrapper">
-    <a href="/decks/<%= id %>" class="button icon approve big present-deck-link">Present</a>
-    <a href="/decks/<%= id %>/slides/new" class="button icon add big new-slide-link">Add slide</a>
+  <span class="deck-action-buttons">
+    <a href="/decks/<%= id %>" class="button big present-deck-button">Present</a>
+    <a href="/decks/<%= id %>/slides/new" class="button big new-slide-button">New slide</a>
   </span>
 </script>
