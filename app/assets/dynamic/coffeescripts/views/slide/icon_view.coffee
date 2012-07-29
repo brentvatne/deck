@@ -4,8 +4,8 @@ class SlideIconView extends Backbone.View
   className: 'micro-slide'
 
   events:
-    'click':                'editSlide'
-    'click .delete-button': 'deleteSlide'
+    'click .slide-edit-button':   'editSlide'
+    'click .slide-delete-button': 'deleteSlide'
 
   template: _.template $('#slide-icon-template').html()
 
@@ -24,7 +24,7 @@ class SlideIconView extends Backbone.View
     da.ui.highlightCodeBlock(@$el)
 
   editSlide: (e) ->
-    # navigate to new url
+    e.preventDefault()
     console.log "edit slide"
 
   deleteSlide: (e) ->

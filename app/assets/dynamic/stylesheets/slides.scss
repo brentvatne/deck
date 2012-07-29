@@ -59,8 +59,8 @@
   position: relative;
 
   &:hover {
-    .delete-button {
-      top: 0px;
+    .slide-edit-button, .slide-delete-button {
+      top: 3px;
     }
 
     border-color: #B8B8B8;
