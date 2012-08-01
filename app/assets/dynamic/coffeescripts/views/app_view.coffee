@@ -39,15 +39,16 @@ class AppView extends Backbone.View
   showDeckEdit: (id) ->
     @clearContainers()
 
-    @content = new da.views.DeckEditView(id: id)
+    @content = new da.views.DeckEditView(deckID: id)
     @$content.append(@content.el)
 
   showSlideEdit: (deckID, slideID) ->
-    @clearContainers()
-
-    @content = new da.views.DeckEditView(id: deckID)
-    @content.editSlide(slideID)
-    @$content.append(@content.el)
+    if @content?.editSlide
+      @content.editSlide(slideID)
+    else
+      @clearContainers()
+      @content = new da.views.DeckEditView(deckID: deckID, slideID: slideID)
+      @$content.append(@content.el)
 
   navigateHome: (e) ->
     e.preventDefault()

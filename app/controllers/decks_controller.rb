@@ -68,6 +68,12 @@ module DeckApp
       erb 'single_page', :locals => {:deck => deck}
     end
 
+    get '/decks/:id/slides/:slide_id/edit', :authenticates => true do
+      deck = current_user.decks.first(:id => params[:id])
+
+      erb 'single_page', :locals => {:deck => deck}
+    end
+
     # Old stuff - not yet api or single page
     post '/slides/:id', :authenticates => true  do
       slide = Slide.first(:id => params[:id])
@@ -96,12 +102,12 @@ module DeckApp
       redirect to("/decks/#{deck.id}/edit")
     end
 
-    get '/decks/:deck_id/slides/:id/edit', :authenticates => true do
-      deck  = current_user.decks.first(:id => params[:deck_id])
-      slide = deck.slides.first(:id => params[:id])
+    # get '/decks/:deck_id/slides/:id/edit', :authenticates => true do
+    #   deck  = current_user.decks.first(:id => params[:deck_id])
+    #   slide = deck.slides.first(:id => params[:id])
 
-      erb 'slides/edit', :locals => {:deck => deck, :slide => slide}
-    end
+    #   erb 'slides/edit', :locals => {:deck => deck, :slide => slide}
+    # end
 
     # ***************************
     #  Move, edit, delete slides
