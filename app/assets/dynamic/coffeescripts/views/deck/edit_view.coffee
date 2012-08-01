@@ -12,6 +12,9 @@ class DeckEditView extends Backbone.View
       success: _.bind(@renderContainer, this)
       error:   _.bind(@invalidID, this)
 
+  editSlide: (slideID) ->
+    # add the edit slide view to this
+
   renderContainer: ->
     @$el.html @template(@deck.toJSON())
 

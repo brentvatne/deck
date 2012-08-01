@@ -25,7 +25,12 @@ class SlideIconView extends Backbone.View
 
   editSlide: (e) ->
     e.preventDefault()
-    console.log "edit slide"
+    deckID  = @slide.get('deck_id')
+    slideID = @slide.get('id')
+
+    Backbone.history.navigate(
+      "/decks/#{deckID}/slides/#{slideID}/edit"
+    , true)
 
   deleteSlide: (e) ->
     @remove()
