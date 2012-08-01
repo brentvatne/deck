@@ -20,7 +20,7 @@ module DeckApp
                                             :space_after_headers => true,
                                             :fenced_code_blocks => true,
                                             :superscript => true)
-      @markdown.render(markdown_text)
+      @markdown.render(markdown_text || "")
     end
   end
 end

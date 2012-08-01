@@ -16,7 +16,7 @@ module DeckApp
 
       slides = deck.slides.all.map do |slide|
         attributes = slide.attributes
-        attributes[:content] = slide.content_as_html
+        attributes[:content_as_html] = slide.content_as_html
         attributes
       end
 
@@ -50,6 +50,30 @@ module DeckApp
 
       deck.update_slide_position(slide, params[:number].to_i)
     end
+
+    put '/api/decks/:id/slides/:slide_id', :authenticates => true do
+      deck  = current_user.decks.first(:id => params[:id])
+      slide = deck.slides.first(:id => params[:slide_id])
+
+      slide.content = json_params[:content]
+      slide.save
+
+      attributes = slide.attributes
+      attributes[:content_as_html] = slide.content_as_html
+      attributes.to_json
+    end
+
+    put '/api/slides/:slide_id', :authenticates => true do
+      slide = current_user.slides.first(:id => params[:slide_id])
+
+      slide.content = json_params[:content]
+      slide.save
+
+      attributes = slide.attributes
+      attributes[:content_as_html] = slide.content_as_html
+      attributes.to_json
+    end
+
 
     # Single page methods
     get '/decks', :authenticates => true do
@@ -101,13 +125,6 @@ module DeckApp
 
       redirect to("/decks/#{deck.id}/edit")
     end
-
-    # get '/decks/:deck_id/slides/:id/edit', :authenticates => true do
-    #   deck  = current_user.decks.first(:id => params[:deck_id])
-    #   slide = deck.slides.first(:id => params[:id])
-
-    #   erb 'slides/edit', :locals => {:deck => deck, :slide => slide}
-    # end
 
     # ***************************
     #  Move, edit, delete slides

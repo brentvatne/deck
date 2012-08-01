@@ -6,6 +6,7 @@ module DeckApp
 
     has 1, :token_pair
     has n, :decks
+    has n, :slides, :through => :decks
 
     property :id,    Serial
     property :email, String, :unique => true

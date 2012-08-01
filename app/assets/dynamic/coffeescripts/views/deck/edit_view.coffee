@@ -41,7 +41,8 @@ class DeckEditView extends Backbone.View
     @activeSlide = @slides.get(@activeSlideID)
 
     if @activeSlide
-      @$slideEditContainer.append(@activeSlide.get('id'))
+      @slideEditView = new da.views.SlideEditView(model: @activeSlide)
+      @$slideEditContainer.append(@slideEditView.el)
 
   editSlide: (slideID) ->
     @activeSlideID = slideID

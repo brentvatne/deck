@@ -4,6 +4,5 @@ class Decks extends Backbone.Collection
 
   model: da.models.Deck
 
-
 @da = window.da
 @da.collections.Decks = Decks
