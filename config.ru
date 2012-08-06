@@ -4,6 +4,8 @@ require './app/bootstrap'
 require './config/api_credentials'
 require 'omniauth'
 require 'omniauth-google-oauth2'
+require 'sprockets'
+require 'active_support'
 
 use Rack::Session::Cookie
 
@@ -19,4 +21,15 @@ use OmniAuth::Builder do
              :approval_prompt => '' }
 end
 
-run DeckApp::App.new
+map '/assets' do
+  environment = Sprockets::Environment.new
+  environment.append_path 'app/assets/javascripts'
+  environment.append_path 'app/assets/stylesheets'
+  environment.append_path 'app/assets/fonts'
+  environment.append_path 'app/assets/images'
+  run environment
+end
+
+map '/' do
+  run DeckApp::App.new
+end

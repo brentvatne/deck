@@ -7,7 +7,6 @@ require_relative '../config/api_credentials'
 
 module DeckApp
 
-  # This portion of the app handles Sinatra configuration and asset serving.
   class App < Sinatra::Application
     register Padrino::Helpers
 
@@ -19,32 +18,9 @@ module DeckApp
 
     enable :static
     set :root,           File.dirname(__FILE__)
-    set :dynamic_assets, File.dirname(__FILE__) + '/assets/dynamic'
-    set :static_assets,  File.dirname(__FILE__) + '/assets/static'
-    set :public_folder,  settings.static_assets
-    set :scss_dir,       '/assets/dynamic/stylesheets'
-    set :coffee_dir,     '/assets/dynamic/coffeescripts'
-    set :template_dir,   settings.dynamic_assets + '/coffeescripts/templates'
-
-    # Both of these get requests are not even called if matching files are found
-    # in the static assets directory
-    get '/stylesheets/*.css' do
-      scss_file = params[:splat].first
-      if stylesheet_exists?(scss_file)
-        scss :"../#{settings.scss_dir}/#{scss_file}"
-      else
-        halt 404
-      end
-    end
-
-    get '/javascripts/*.js' do
-      coffee_file = params[:splat].first
-      if coffeescript_exists?(coffee_file)
-        coffee :"../#{settings.coffee_dir}/#{coffee_file}"
-      else
-        halt 404
-      end
-    end
+    set :assets,         File.dirname(__FILE__) + '/assets/'
+    set :public_folder,  settings.assets + '../public'
+    set :template_dir,   settings.assets + '/javascripts/templates'
 
     helpers do
       def template(relative_path)

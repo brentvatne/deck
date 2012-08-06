@@ -42,4 +42,4 @@ ui =
       codeBlocks.each (i, e) -> hljs.highlightBlock(e)
 
 @da = window.da || {}
-@da.ui = _.extend(@da.ui, ui)
+@da.ui = _.extend(@da.ui || {}, ui)

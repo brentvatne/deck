@@ -14,6 +14,7 @@ gem 'redcarpet'
 
 # Assets
 gem 'sass', '~> 3.1.14'
+gem 'sprockets'
 
 # Development utilities
 gem 'rake', '~> 0.9.2.2'
@@ -21,6 +22,7 @@ gem 'rake', '~> 0.9.2.2'
 # Others
 gem 'datamapper', '~> 1.2.0'
 gem 'dm-sqlite-adapter', '~> 1.2.0'
+gem 'activesupport'
 
 group :development do
   gem 'debugger'
