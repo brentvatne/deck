@@ -3,7 +3,7 @@ class DeckIconView extends Backbone.View
 
   class: 'deck-stack'
 
-  template: _.template($('#deck-icon-template').html())
+  template: JST['templates/deck/icon']
 
   initialize: ->
     @deck = @model

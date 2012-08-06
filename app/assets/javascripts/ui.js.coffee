@@ -33,7 +33,7 @@ ui =
     $('body .notification').remove()
 
   renderNotification: (params) ->
-    notification_template = _.template($('#notification-template').html())
+    notification_template = JST['templates/ui/notification']
     notification_template(params)
 
   highlightCodeBlock: (block) ->

@@ -7,7 +7,7 @@ class SlideIconView extends Backbone.View
     'click .slide-edit-button':   'editSlide'
     'click .slide-delete-button': 'deleteSlide'
 
-  template: _.template $('#slide-icon-template').html()
+  template: JST['templates/slide/icon']
 
   initialize: (options) ->
     da.app.instances.slideIconViews.push(this)

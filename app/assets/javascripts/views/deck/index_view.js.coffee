@@ -1,7 +1,7 @@
 class DeckIndexView extends Backbone.View
   class: 'deck-index-wrap'
 
-  template: _.template($('#deck-index-template').html())
+  template: JST['templates/deck/index']
 
   initialize: ->
     da.ui.showLoading()

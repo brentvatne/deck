@@ -3,7 +3,7 @@ class EmptySlideListView extends Backbone.View
 
   className: 'notice inline-notification'
 
-  template: _.template($('#empty-slide-list-template').html())
+  template: JST['templates/slide/empty_list']
 
   initialize: (options) ->
     da.app.instances.emptySlideListView = this

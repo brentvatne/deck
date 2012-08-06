@@ -15,6 +15,7 @@ gem 'redcarpet'
 # Assets
 gem 'sass', '~> 3.1.14'
 gem 'sprockets'
+gem 'ejs'
 
 # Development utilities
 gem 'rake', '~> 0.9.2.2'

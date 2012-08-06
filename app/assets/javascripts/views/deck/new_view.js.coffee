@@ -1,7 +1,7 @@
 class DeckNewView extends Backbone.View
   className: 'new-deck'
 
-  template: _.template($('#deck-new-template').html())
+  template: JST['templates/deck/new']
 
   events:
     'submit form': 'createNewDeck'

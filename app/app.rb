@@ -20,14 +20,8 @@ module DeckApp
     set :root,           File.dirname(__FILE__)
     set :assets,         File.dirname(__FILE__) + '/assets/'
     set :public_folder,  settings.assets + '../public'
-    set :template_dir,   settings.assets + '/javascripts/templates'
 
     helpers do
-      def template(relative_path)
-        template_file = File.join(settings.template_dir, relative_path + ".html")
-        if File.exists?(template_file) then File.read(template_file) else "" end
-      end
-
       def json_params
         @json_params ||= JSONParamsWrapper.new(request.body)
       end

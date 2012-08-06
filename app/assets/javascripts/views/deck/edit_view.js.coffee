@@ -1,6 +1,6 @@
 class DeckEditView extends Backbone.View
 
-  template: _.template($('#deck-edit-template').html())
+  template: JST['templates/deck/edit']
 
   initialize: (options) ->
     da.app.instances.deckEditView = this

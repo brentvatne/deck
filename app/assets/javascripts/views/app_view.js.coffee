@@ -1,7 +1,7 @@
 class AppView extends Backbone.View
   class: 'deck-app-wrap'
 
-  template: _.template($('#deck-app-template').html())
+  template: JST['templates/app']
 
   events:
     "click .navigate-home":    "navigateHome"

@@ -3,7 +3,7 @@ class EmptyDeckListView extends Backbone.View
 
   className: 'notice inline-notification'
 
-  template: _.template($('#empty-deck-list-template').html())
+  template: JST['templates/deck/empty_list']
 
   initialize: ->
     da.app.instances.emptyDeckListView = this

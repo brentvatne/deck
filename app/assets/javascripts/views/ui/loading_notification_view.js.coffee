@@ -2,7 +2,7 @@ class LoadingNotificationView extends Backbone.View
 
   tagName: 'LoadingNotification'
 
-  template: _.template($('#loading-notification-template').html())
+  template: JST['templates/ui/loading_notification']
 
   initialize: ->
     @render()

@@ -1,6 +1,6 @@
 class SlideEditView extends Backbone.View
 
-  template: _.template $('#slide-edit-template').html()
+  template: JST['templates/slide/edit']
 
   events:
     'keypress .content-area': 'delayedSave'
