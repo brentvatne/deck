@@ -10,8 +10,8 @@ class SlideListView extends Backbone.View
     @slides = @collection
     @slides.on 'reset', @render, this
 
-    # This is a special case because here we are using jQuery on, rather
-    # than Backbone on, which accepts a third argument for execution context
+    # This is a special case because here we are using jQuery `on`, rather
+    # than Backbone `on`, which accepts a third argument for execution context
     @$el.on 'sortupdate', _.bind(@updatePosition, this)
 
     @render()
@@ -23,8 +23,9 @@ class SlideListView extends Backbone.View
     @$el.empty()
 
     _.each @slides.models, (slide) =>
-      slide.on 'reorder', @reloadSlides, this
+      slide.on 'reorder',       @reloadSlides, this
       slide.on 'error:reorder', @render, this
+      slide.on 'change',        @reloadSlides, this
       @$el.append (new da.views.SlideIconView(slide: slide)).el
 
     @$el.sortable(items: '.micro-slide')
