@@ -5,6 +5,7 @@ class Router extends Backbone.Router
     "decks/new":                          "deckNew"
     "decks/:id/edit":                     "deckEdit"
     "decks/:deckID/slides/:slideID/edit": "slideEdit"
+    "decks/:deckID/slides/:slideID":      "present"
 
   root: ->
     Backbone.history.navigate("decks", true)
@@ -24,6 +25,10 @@ class Router extends Backbone.Router
   slideEdit: (deckID, slideID) ->
     @initializeAppView() unless @appView
     @appView.showSlideEdit(deckID, slideID)
+
+  present: (deckID, slideID) ->
+    @initializeAppView() unless @appView
+    @appView.showPresentation(deckID, slideID)
 
   initializeAppView: ->
     @appView = new da.views.AppView

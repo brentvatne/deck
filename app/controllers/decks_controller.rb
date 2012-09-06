@@ -74,7 +74,6 @@ module DeckApp
       attributes.to_json
     end
 
-
     # Single page methods
     get '/decks', :authenticates => true do
       decks = current_user.decks.all
@@ -96,6 +95,10 @@ module DeckApp
       deck = current_user.decks.first(:id => params[:id])
 
       erb 'single_page', :locals => {:deck => deck}
+    end
+
+    get '/decks/:id/slides/:slide_id' do
+      erb 'single_page'
     end
 
     # Old stuff - not yet api or single page
