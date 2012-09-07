@@ -4,9 +4,10 @@ class AppView extends Backbone.View
   template: JST['templates/app']
 
   events:
-    "click .navigate-home":    "navigateHome"
-    "click .deck-show-button": "navigateToDeckAction"
-    "click .new-deck-button":  "navigateToDeckAction"
+    "click .navigate-home":       "navigateHome"
+    "click .deck-show-button":    "navigateToDeckAction"
+    "click .new-deck-button":     "navigateToDeckAction"
+    "click .present-deck-button": "navigateToDeckAction"
 
   initialize: (options) ->
     preloadData = options['preloadData']

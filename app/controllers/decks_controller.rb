@@ -97,7 +97,7 @@ module DeckApp
       erb 'single_page', :locals => {:deck => deck}
     end
 
-    get '/decks/:id/slides/:slide_id' do
+    get '/decks/:id/present/:slide_id' do
       erb 'single_page'
     end
 

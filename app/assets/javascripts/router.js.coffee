@@ -5,7 +5,7 @@ class Router extends Backbone.Router
     "decks/new":                          "deckNew"
     "decks/:id/edit":                     "deckEdit"
     "decks/:deckID/slides/:slideID/edit": "slideEdit"
-    "decks/:deckID/slides/:slideID":      "present"
+    "decks/:deckID/present/:slideID":     "present"
 
   root: ->
     Backbone.history.navigate("decks", true)
