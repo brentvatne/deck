@@ -2,7 +2,8 @@ source "http://rubygems.org"
 
 # Sinatra and related gems
 gem 'sinatra', '~> 1.3.2'
-gem "padrino-helpers", "~> 0.10.6"
+gem 'sinatra-session'
+gem "padrino-helpers"
 gem 'shotgun', '~> 0.9'
 gem 'sinatra-flash', '~> 0.3.0'
 gem 'omniauth'
@@ -23,7 +24,6 @@ gem 'rake', '~> 0.9.2.2'
 # Others
 gem 'datamapper', '~> 1.2.0'
 gem 'dm-sqlite-adapter', '~> 1.2.0'
-gem 'activesupport'
 
 group :development do
   gem 'debugger'

@@ -43,8 +43,8 @@ module DeckApp
     # or initiates the authroization process if the user is not already
     # authorized
     def authenticate
-      if user_has_session_cookie? and user_in_database?
-        Thread.current['uid'] = session[:uid]
+      if current_user
+        true
       else
         unless authentication_in_progress?
           redirect '/auth/google_oauth2', 303
@@ -52,24 +52,9 @@ module DeckApp
       end
     end
 
-    def user_has_session_cookie?
-      !!session[:uid]
-    end
-
-    def user_in_database?
-      current_user
-    end
-
     helpers do
       def current_user
         @current_user ||= User.first(:email => session[:uid])
-      end
-    end
-
-    # Returns TokenPair instance from the session or returns nil
-    def session_token_pair
-      if current_user
-        user.token_pair
       end
     end
 

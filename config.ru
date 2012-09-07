@@ -2,7 +2,6 @@ APP_ENV = 'production'
 
 map '/assets' do
   require 'sprockets'
-  require 'active_support'
 
   environment = Sprockets::Environment.new
   environment.append_path 'app/assets/javascripts'
@@ -30,5 +29,6 @@ map '/' do
                :access => 'offline',
                :approval_prompt => '' }
   end
+
   run DeckApp::App.new
 end

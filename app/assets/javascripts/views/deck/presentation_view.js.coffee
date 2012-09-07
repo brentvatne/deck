@@ -14,6 +14,9 @@ class PresentationView extends Backbone.View
       error:   _.bind(@invalidDeckID, this)
 
   renderLayout: ->
+    @$el.html(@template())
+    @$slide = @$el.find('.slide')
+
     @slides.fetch
       success: _.bind(@beginPresentation, this)
 
@@ -24,7 +27,7 @@ class PresentationView extends Backbone.View
   showSlide: (slideID) ->
     @invalidSlideID() if slideID > @slides.size() + 1
     @activeSlide = @slides.at(@activeSlideID - 1)
-    @$el.html(@activeSlide.get('content_as_html'))
+    @$slide.html(@activeSlide.get('content_as_html'))
 
   invalidDeckID: (model, response) ->
     da.ui.displayNotification

@@ -1,15 +1,17 @@
 require 'sinatra/base'
 require 'padrino-helpers'
+require 'sinatra/session'
 require 'sinatra/flash'
 require 'sass'
+
 require_relative '../config/api_credentials'
 
 module DeckApp
 
   class App < Sinatra::Application
     register Padrino::Helpers
+    register Sinatra::Session
 
-    enable :sessions
     enable :logging
 
     set :client_id,     DeckApp::GAPI_CLIENT_ID
