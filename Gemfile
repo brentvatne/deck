@@ -16,7 +16,7 @@ gem 'redcarpet'
 gem 'sass', '~> 3.1.14'
 
 # Development utilities
-gem 'rake', '~> 0.9.2.2'
+gem 'rake', '~> 12.3.3'
 
 # Others
 gem 'datamapper', '~> 1.2.0'
