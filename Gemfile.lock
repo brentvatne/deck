@@ -20,6 +20,7 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     columnize (0.3.6)
+    concurrent-ruby (1.1.10)
     daemons (1.1.8)
     data_objects (0.10.7)
       addressable (~> 2.1)
@@ -91,7 +92,8 @@ GEM
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
     httpauth (0.1)
-    i18n (0.6.0)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     json (1.6.5)
     json_pure (1.6.5)
     libv8 (3.3.10.4)
